@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">IVerbs</string>
+    <string name="NVersion">Versión 1.0</string>
+    <string name="Disenador">Jorge Soto R.</string>
+
+    <string name="DatosMenu1">Lista de verbos</string>
+    <string name="DatosMenu2">Estudiar</string>
+    <string name="DatosMenu3">Examen</string>
+
+    <string name="ListVerbBuscar">Buscar...</string>
+
+    <string name="Ejemplo">Ejemplo:</string>
+
+    <string name="Presente">Infinitivo</string>
+    <string name="Pasado">Pasado</string>
+    <string name="PasadoParticipio">Participio</string>
+
+    <string name="Mensaje1">¡No se han encontrado coincidencia..!</string>
+    <string name="title_activity_test_1">Test_1</string>
+    <string name="title_activity_test">Test</string>
+    <string name="Title_Test1">Test</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+</resources>

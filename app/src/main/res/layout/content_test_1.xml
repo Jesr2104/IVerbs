@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Test_1"
+    tools:showIn="@layout/activity_test_1"
+    android:background="#3B68AA"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/contenedor2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/contenedor3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/listverbslayout">
+
+                    <RelativeLayout
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/listverbslayout"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="9dp">
+
+                        <ImageButton
+                            android:id="@+id/disabledsound"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerInParent="true"
+                            android:background="@android:color/transparent"
+                            app:srcCompat="@drawable/song"
+                            tools:ignore="VectorDrawableCompat" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/titulotest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TITULO TEST"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#3b68aa"
+                        android:textStyle="bold|italic"
+                        android:textSize="30sp"
+                        app:fontFamily="sans-serif-condensed"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+                    <RelativeLayout
+                        android:id="@+id/barraprogreso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/titulotest"
+                        android:layout_marginRight="1.2dp"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="15dp"
+                        tools:ignore="NotSibling">
+
+                        <ProgressBar
+                            android:id="@+id/progressBar3"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="28dp"
+                            android:progress="25"
+                            android:progressDrawable="@drawable/myprogressbar" />
+
+                        <TextView
+                            android:id="@+id/textporcentaje"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="9dp"
+                            android:text="25%"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textColor="#ffffff"
+                            android:textSize="10sp"
+                            android:textStyle="bold|italic"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/marcopreguntas"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/barraprogreso"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp">
+
+                        <TextView
+                            android:id="@+id/textnpregunta"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pregunta #1"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="#3b68aa"
+                            android:textStyle="bold|italic"
+                            app:fontFamily="sans-serif-condensed"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+                        <View
+                            android:id="@+id/lineaSeparadora"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_below="@+id/textnpregunta"
+                            android:layout_marginLeft="1.2dp"
+                            android:layout_marginRight="1.2dp"
+                            android:background="@drawable/linea" />
+
+                        <TextView
+                            android:id="@+id/traduccion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Traduccion"
+                            android:layout_below="@+id/lineaSeparadora"
+                            android:layout_marginTop="10dp"
+                            android:layout_centerHorizontal="true"
+                            android:textAlignment="center"
+                            android:textSize="18sp"
+                            android:textColor="#3b68aa"
+                            android:textStyle="bold|italic"
+                            app:fontFamily="sans-serif-condensed"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+                        <TextView
+                            android:id="@+id/pregunta"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pregunta?"
+                            android:layout_below="@id/traduccion"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="#3b68aa"
+                            android:textStyle="bold|italic"
+                            android:textSize="16sp"
+                            app:fontFamily="sans-serif-condensed"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+                        <EditText
+                            android:id="@+id/camporespuesta"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pregunta"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold|italic"
+                            android:layout_marginTop="25dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/listverbslayoutorange"
+                            android:ems="10"
+                            android:inputType="text"
+                            android:textColorHint="#ffffff"
+                            android:textAlignment="center" />
+
+                        <Button
+                            android:id="@+id/bcomprobar"
+                            android:layout_width="140dp"
+                            android:layout_height="60dp"
+                            android:layout_below="@id/camporespuesta"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp"
+                            android:text="Comprobar"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="#3b68aa"
+                            android:textStyle="bold|italic"
+                            app:fontFamily="sans-serif-condensed" />
+
+                        <LinearLayout
+                            android:id="@+id/sonidos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="15dp"
+                            android:visibility="gone"
+                            android:layout_below="@id/bcomprobar">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="0.33"
+                                android:gravity="center">
+
+                                <ImageButton
+                                    android:id="@+id/verbopresent"
+                                    android:layout_width="32dp"
+                                    android:background="@android:color/transparent"
+                                    android:layout_height="32dp"
+                                    app:srcCompat="@drawable/song" />
+
+                                <TextView
+                                    android:id="@+id/Datos1Present"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="  Become  "
+                                    android:background="@drawable/listverbslayoutorange"
+                                    android:layout_marginTop="3dp"
+                                    android:textAppearance="@style/TextAppearance.AppCompat"
+                                    android:textColor="#3b68aa"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    app:fontFamily="sans-serif-condensed" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="0.33"
+                                android:gravity="center">
+
+
+                                <ImageButton
+                                    android:id="@+id/verbopast"
+                                    android:layout_width="32dp"
+                                    android:background="@android:color/transparent"
+                                    android:layout_height="32dp"
+                                    app:srcCompat="@drawable/song" />
+
+                                <TextView
+                                    android:id="@+id/Datos2Past"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=" Became "
+                                    android:background="@drawable/listverbslayoutorange"
+                                    android:layout_marginTop="3dp"
+                                    android:textAppearance="@style/TextAppearance.AppCompat"
+                                    android:textColor="#3b68aa"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    app:fontFamily="sans-serif-condensed" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="0.33"
+                                android:gravity="center">
+
+                                <ImageButton
+                                    android:id="@+id/verbopastparticible"
+                                    android:layout_width="32dp"
+                                    android:background="@android:color/transparent"
+                                    android:layout_height="32dp"
+                                    app:srcCompat="@drawable/song" />
+
+                                <TextView
+                                    android:id="@+id/Datos3PP"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=" Become "
+                                    android:background="@drawable/listverbslayoutorange"
+                                    android:layout_marginTop="3dp"
+                                    android:textAppearance="@style/TextAppearance.AppCompat"
+                                    android:textColor="#3b68aa"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    app:fontFamily="sans-serif-condensed" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

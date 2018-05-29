@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/bar_search"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="@string/ListVerbBuscar"
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView"/>
+
+</menu>
+
+    <!--app:actionViewClass="android.widget.SearchView"-->
+    <!--android:actionViewClass="android.support.v7.widget.SearchView"-->
+    <!--android:orderInCategory="100"-->

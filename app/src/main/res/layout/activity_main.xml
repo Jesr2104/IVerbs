@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="just_jump.iverbs.MainActivity">
+
+    <Button
+        android:id="@+id/B_ListaVerbos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="83dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/DatosMenu1"
+        android:textAppearance="@android:style/TextAppearance.Material.WindowTitle"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/B_Estudiar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/B_ListaVerbos"
+        android:layout_alignLeft="@+id/B_ListaVerbos"
+        android:layout_alignRight="@+id/B_ListaVerbos"
+        android:layout_alignStart="@+id/B_ListaVerbos"
+        android:layout_below="@+id/B_ListaVerbos"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/DatosMenu2"
+        android:textAppearance="@android:style/TextAppearance.Material.WindowTitle"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/B_Examen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/B_Estudiar"
+        android:layout_alignLeft="@+id/B_Estudiar"
+        android:layout_alignRight="@+id/B_Estudiar"
+        android:layout_alignStart="@+id/B_Estudiar"
+        android:layout_below="@+id/B_Estudiar"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/DatosMenu3"
+        android:textAppearance="@android:style/TextAppearance.Material.WindowTitle"
+        android:textStyle="bold|italic" />
+</RelativeLayout>

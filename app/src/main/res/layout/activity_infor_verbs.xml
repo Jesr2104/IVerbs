@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3B68AA"
+    android:orientation="vertical">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/listverbslayout">
+
+                <TextView
+                    android:id="@+id/TextTitleVerb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="Text Verb"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#ec8e1d"
+                    android:textSize="24sp"
+                    android:textStyle="bold|italic"
+                    android:typeface="monospace"
+                    app:fontFamily="sans-serif-condensed" />
+
+                <ImageView
+                    android:id="@+id/Ilustracion"
+                    android:layout_width="250dp"
+                    android:layout_height="130dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="35dp"
+                    app:srcCompat="@drawable/ilustracion" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/Traducciones"
+                android:layout_width="match_parent"
+                android:layout_height="112dp"
+                android:layout_below="@+id/inforverb1"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/listverbslayout">
+
+                <TextView
+                    android:id="@+id/TextTraduccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Traduccion"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="#3b68aa"
+                    android:textSize="24sp"
+                    android:textStyle="bold|italic"
+                    android:typeface="monospace"
+                    app:fontFamily="sans-serif-condensed" />
+
+                <ImageView
+                    android:id="@+id/IconoTraduccion"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="22dp"
+                    app:srcCompat="@drawable/traduccion"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="22dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_traduccion"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/listverbslayout">
+
+                <ImageButton
+                    android:id="@+id/BotonSongPresentEjemplo"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/EjePresent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="25dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/song" />
+
+                <TextView
+                    android:id="@+id/EjePresent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="90dp"
+                    android:text="Texto ejemplo"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#3b68aa"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:fontFamily="sans-serif-condensed" />
+
+                <TextView
+                    android:id="@+id/textejemploPresente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="65dp"
+                    android:text="@string/Ejemplo"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#3b68aa"
+                    android:textStyle="bold"
+                    app:fontFamily="sans-serif-condensed" />
+
+                <View
+                    android:id="@+id/lineaSeparadoraPresent"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@drawable/linea" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.50"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/TextPresent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Verb P"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="#ec8e1d"
+                            android:textSize="18sp"
+                            android:textStyle="bold|italic"
+                            android:typeface="monospace"
+                            app:fontFamily="sans-serif-condensed" />
+
+                        <ImageButton
+                            android:id="@+id/BotonSongPresent"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@android:color/transparent"
+                            android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/song"
+                            tools:ignore="VectorDrawableCompat" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="0.50"
+                        android:gravity="right|center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Tiempo1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Presente"
+                            android:textColor="#3b68aa"
+                            android:textStyle="bold"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            app:fontFamily="sans-serif-condensed" />
+
+                        <ImageView
+                            android:id="@+id/iconoPresent"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="10dp"
+                            app:srcCompat="@drawable/presente" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_traduccion"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/listverbslayout">
+
+                <ImageButton
+                    android:id="@+id/BotonSongPastEjemplo"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/EjePast"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="25dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/song" />
+
+                <TextView
+                    android:id="@+id/EjePast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="90dp"
+                    android:text="Texto ejemplo"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#3b68aa"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:fontFamily="sans-serif-condensed" />
+
+                <TextView
+                    android:id="@+id/textejemploPasado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="65dp"
+                    android:text="Ejemplo:"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#3b68aa"
+                    android:textStyle="bold"
+                    app:fontFamily="sans-serif-condensed" />
+
+                <View
+                    android:id="@+id/lineaSeparadoraPast"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@drawable/linea" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.50"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/TextPast"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Verb P"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="#ec8e1d"
+                            android:textSize="18sp"
+                            android:textStyle="bold|italic"
+                            android:typeface="monospace"
+                            app:fontFamily="sans-serif-condensed" />
+
+                        <ImageButton
+                            android:id="@+id/BotonSongPast"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@android:color/transparent"
+                            android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/song" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="0.50"
+                        android:gravity="right|center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Tiempo2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Pasado"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textColor="#3b68aa"
+                            android:textStyle="bold"
+                            app:fontFamily="sans-serif-condensed" />
+
+                        <ImageView
+                            android:id="@+id/iconoPast"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="10dp"
+                            app:srcCompat="@drawable/pasado" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_traduccion"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/listverbslayout">
+
+                <ImageButton
+                    android:id="@+id/BotonSongPastPEjemplo"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/EjePastP"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="25dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/song" />
+
+                <TextView
+                    android:id="@+id/EjePastP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="90dp"
+                    android:text="Texto ejemplo"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#3b68aa"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:fontFamily="sans-serif-condensed" />
+
+                <TextView
+                    android:id="@+id/textejemploParticipio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="65dp"
+                    android:text="Ejemplo:"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#3b68aa"
+                    android:textStyle="bold"
+                    app:fontFamily="sans-serif-condensed" />
+
+                <View
+                    android:id="@+id/lineaSeparadora"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@drawable/linea" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.50"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/TextPastParticiple"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Verb P"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="#ec8e1d"
+                            android:textSize="18sp"
+                            android:textStyle="bold|italic"
+                            android:typeface="monospace"
+                            app:fontFamily="sans-serif-condensed" />
+
+                        <ImageButton
+                            android:id="@+id/BotonSongPastP"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@android:color/transparent"
+                            android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/song" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="0.50"
+                        android:gravity="right|center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Tiempo3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/PasadoParticipio"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textColor="#3b68aa"
+                            android:textStyle="bold"
+                            app:fontFamily="sans-serif-condensed" />
+
+                        <ImageView
+                            android:id="@+id/iconoPastP"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="10dp"
+                            app:srcCompat="@drawable/pparticipio" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
