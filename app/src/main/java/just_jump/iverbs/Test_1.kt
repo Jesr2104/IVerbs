@@ -4,15 +4,13 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Html
-import android.text.InputType
-import android.view.View
 import android.widget.*
 import just_jump.iverbs.Objetos_Creados.Class_Test_1
 import kotlinx.android.synthetic.main.activity_test_1.*
 import kotlinx.android.synthetic.main.content_test_1.*
 import java.text.DecimalFormat
-import android.content.Context.INPUT_METHOD_SERVICE
 import android.view.inputmethod.InputMethodManager
+import just_jump.iverbs.Objetos_Creados.Class_Sonidos
 
 
 class Test_1 : AppCompatActivity() {
@@ -34,6 +32,8 @@ class Test_1 : AppCompatActivity() {
         var progress: Int = 0
         var porcentaje_progressbar: Float = 0.0f
         var contador: Int = 0
+        var Tiempo_pregunta = -1
+        var config_sonido:Class_Sonidos = Class_Sonidos(this)
 
         /*Linea de codigo para vizualizar el icono en la action bar*/
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -51,8 +51,8 @@ class Test_1 : AppCompatActivity() {
 
             //******************************************************************************************
             // joder esta mierda no hace nada
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(CampoRest.getWindowToken(), 0)
+            //val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            //imm.hideSoftInputFromWindow(CampoRest.getWindowToken(), 0)
             //******************************************************************************************
 
             //Comprueba que no se han recorrido todos las preguntas del array test
@@ -69,14 +69,17 @@ class Test_1 : AppCompatActivity() {
                 if (Test.ListPregunta[contador].getTPreguntado() == 0)
                 {
                     TextCambio2.setText("Cual es el infinitivo de este verbo?")
+                    Tiempo_pregunta = 0
                 }
                 else if (Test.ListPregunta[contador].getTPreguntado() == 1)
                 {
                     TextCambio2.setText("Cual es el pasado de este verbo?")
+                    Tiempo_pregunta = 1
                 }
                 else if (Test.ListPregunta[contador].getTPreguntado() == 2)
                 {
                     TextCambio2.setText("Cual es el pasado participio de este verbo?")
+                    Tiempo_pregunta = 2
                 }
             }
         }
@@ -117,6 +120,19 @@ class Test_1 : AppCompatActivity() {
 
                 val toast = Toast.makeText(applicationContext, text, duration)
                 toast.show()
+
+                if (Tiempo_pregunta == 0)
+                {
+                    config_sonido.present(Test.ListPregunta[contador].getVerb().S_Palabra[0])
+                }
+                else if(Tiempo_pregunta == 1)
+                {
+                    config_sonido.past(Test.ListPregunta[contador].getVerb().S_Palabra[0])
+                }
+                else if (Tiempo_pregunta == 2)
+                {
+                    config_sonido.participle(Test.ListPregunta[contador].getVerb().S_Palabra[0])
+                }
 
                 contador ++
                 Actualizar_Progress()
