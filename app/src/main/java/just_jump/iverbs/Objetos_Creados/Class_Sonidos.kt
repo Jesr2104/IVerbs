@@ -4665,4 +4665,16 @@ class Class_Sonidos(val context: Context)
         //devuelve el tiempo de reproduccion de sonido
         return repro.duration + 50
     }
+
+    fun wrong_answer():Any{
+
+        if(repro != null)
+        {
+            repro!!.release()
+        }
+        repro = MediaPlayer.create(context, R.raw.wrong_answer)
+        repro!!.start()
+
+        return 2000
+    }
 }

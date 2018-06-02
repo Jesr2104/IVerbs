@@ -2,20 +2,21 @@ package just_jump.iverbs
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.text.Html
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import just_jump.iverbs.Objetos_Creados.Class_Test_1
 import kotlinx.android.synthetic.main.activity_test_1.*
 import kotlinx.android.synthetic.main.content_test_1.*
 import java.text.DecimalFormat
-import android.view.inputmethod.InputMethodManager
 import just_jump.iverbs.Objetos_Creados.Class_Sonidos
-
 
 class Test_1 : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_1)
         setSupportActionBar(toolbar)
@@ -34,6 +35,7 @@ class Test_1 : AppCompatActivity() {
         var contador: Int = 0
         var Tiempo_pregunta = -1
         var config_sonido:Class_Sonidos = Class_Sonidos(this)
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
         /*Linea de codigo para vizualizar el icono en la action bar*/
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -42,18 +44,11 @@ class Test_1 : AppCompatActivity() {
         supportActionBar?.setLogo(R.drawable.logo)
 
         // Funcion que carga los datos de la pregunta que se va a realizar
-        fun Cargar_Pregunta()
-        {
+        fun Cargar_Pregunta(){
+
             barraProgreso.progress = progress
 
             CampoRest.hint = "Respuesta..."
-            //CampoRest.setInputType(InputType.TYPE_CLASS_TEXT)
-
-            //******************************************************************************************
-            // joder esta mierda no hace nada
-            //val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            //imm.hideSoftInputFromWindow(CampoRest.getWindowToken(), 0)
-            //******************************************************************************************
 
             //Comprueba que no se han recorrido todos las preguntas del array test
             if(contador<Test.ListPregunta.size)
@@ -84,8 +79,8 @@ class Test_1 : AppCompatActivity() {
             }
         }
 
-        fun Actualizar_Progress()
-        {
+        fun Actualizar_Progress(){
+
             val formato = DecimalFormat("0.00")
             val valor_Pregunta: Float = (100 / Test.ListPregunta.size.toFloat())
 
@@ -121,34 +116,70 @@ class Test_1 : AppCompatActivity() {
                 val toast = Toast.makeText(applicationContext, text, duration)
                 toast.show()
 
-                if (Tiempo_pregunta == 0)
+                if(disabled_sound == false)
                 {
-                    config_sonido.present(Test.ListPregunta[contador].getVerb().S_Palabra[0])
-                }
-                else if(Tiempo_pregunta == 1)
-                {
-                    config_sonido.past(Test.ListPregunta[contador].getVerb().S_Palabra[0])
-                }
-                else if (Tiempo_pregunta == 2)
-                {
-                    config_sonido.participle(Test.ListPregunta[contador].getVerb().S_Palabra[0])
+                    if (Tiempo_pregunta == 0)
+                    {
+                        config_sonido.present(Test.ListPregunta[contador].getVerb().S_Palabra[0])
+                    }
+                    else if(Tiempo_pregunta == 1)
+                    {
+                        config_sonido.past(Test.ListPregunta[contador].getVerb().S_Palabra[0])
+                    }
+                    else if (Tiempo_pregunta == 2)
+                    {
+                        config_sonido.participle(Test.ListPregunta[contador].getVerb().S_Palabra[0])
+                    }
                 }
 
                 contador ++
+                camporespuesta.setText("")
+                imm.hideSoftInputFromWindow(camporespuesta.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
                 Actualizar_Progress()
                 Cargar_Pregunta()
-                camporespuesta.setText("")
-                //panelSonidos.setVisibility(View.VISIBLE)
             }
             else
             {
-                val text = "La respuesta no es correcta!"
-                val duration = Toast.LENGTH_SHORT
+                if(camporespuesta.text.length > 0)
+                {
+                    // cambiar texto a variable traducible
+                    val text = "La respuesta no es correcta!"
+                    val duration = Toast.LENGTH_SHORT
 
-                val toast = Toast.makeText(applicationContext, text, duration)
-                toast.show()
+                    val toast = Toast.makeText(applicationContext, text, duration)
+                    toast.show()
+
+                    if(disabled_sound == false)
+                    {
+                        var time:Int = config_sonido.wrong_answer() as Int
+                        contador ++
+
+                        var Manejador = Handler().postDelayed({
+                            camporespuesta.setText("")
+                            imm.hideSoftInputFromWindow(camporespuesta.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
+                            Cargar_Pregunta()
+                            Actualizar_Progress()
+                        }, time.toLong())
+                    }
+                    else
+                    {
+                        contador ++
+                        camporespuesta.setText("")
+                        imm.hideSoftInputFromWindow(camporespuesta.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
+                        Cargar_Pregunta()
+                        Actualizar_Progress()
+                    }
+                }
+                else
+                {
+                    // cambiar texto a variable traducible
+                    val text = "La respuesta esta vacia.."
+                    val duration = Toast.LENGTH_SHORT
+
+                    val toast = Toast.makeText(applicationContext, text, duration)
+                    toast.show()
+                }
             }
-
         })
 
         disabledsound.setOnClickListener ({
@@ -164,5 +195,16 @@ class Test_1 : AppCompatActivity() {
                 disabledsound.setImageResource(R.drawable.corneta_prohibido)
             }
         })
+    }
+
+    override fun onBackPressed() {
+
+        val mensaje = AlertDialog.Builder(this)
+
+        mensaje.setTitle(getString(R.string.mensaje_salir_test))
+        mensaje.setCancelable(false)
+        mensaje.setPositiveButton(getString(R.string.text_aceptar)) { dialog, which -> finish() }
+        mensaje.setNegativeButton(getString(R.string.text_cancelar)) { dialog, which -> }
+        mensaje.show()
     }
 }
