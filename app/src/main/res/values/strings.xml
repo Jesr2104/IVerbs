@@ -20,8 +20,14 @@
 
     <string name="mensaje_salir_test">Desea abandonar la prueba.</string>
 
+    <string name="Pregunta_Infi">Cual es el "INFINITIVO" del verbo?</string>
+    <string name="Pregunta_Pasado">Cual es el "PASADO" del verbo?</string>
+    <string name="Pregunta_PParticipio">Cual es el "PASADO PARTICIPIO" del verbo?</string>
+
     <string name="text_aceptar">Aceptar</string>
     <string name="text_cancelar">Cancelar</string>
+
+    <string name="Respuesta">Respuesta...</string>
 
     <string name="title_activity_test_1">Test_1</string>
     <string name="title_activity_test">Test</string>

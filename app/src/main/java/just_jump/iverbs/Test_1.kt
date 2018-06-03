@@ -21,63 +21,29 @@ class Test_1 : AppCompatActivity() {
         setContentView(R.layout.activity_test_1)
         setSupportActionBar(toolbar)
 
-        var disabled_sound: Boolean = false
+        //  Cargamos los datos con la lista de todos lo verbos a preguntar
         var Test: Class_Test_1 = Class_Test_1(this)
-        val panelSonidos: LinearLayout = findViewById(R.id.sonidos)
         val CampoRest: EditText = findViewById(R.id.camporespuesta)
         val TextCambio1: TextView = findViewById(R.id.traduccion)
         val TextCambio2: TextView = findViewById(R.id.pregunta)
         val TextCambio3: TextView = findViewById(R.id.textporcentaje)
         val TextCambio4: TextView = findViewById(R.id.textnpregunta)
         var barraProgreso: ProgressBar = findViewById(R.id.progressBar3)
-        var progress: Int = 0
-        var porcentaje_progressbar: Float = 0.0f
-        var contador: Int = 0
-        var Tiempo_pregunta = -1
-        var config_sonido:Class_Sonidos = Class_Sonidos(this)
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        var config_sonido:Class_Sonidos = Class_Sonidos(this)
+        var porcentaje_progressbar: Float = 0.0f
+        var disabled_sound: Boolean = false
+        var contador: Int = 0
+        var progress: Int = 0
+        var Tiempo_pregunta = -1
 
-        /*Linea de codigo para vizualizar el icono en la action bar*/
+        //======================================================================//
+        //  Linea de codigo para vizualizar el icono en la action bar
+        //======================================================================//
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayUseLogoEnabled(true)
         supportActionBar?.setLogo(R.drawable.logo)
-
-        // Funcion que carga los datos de la pregunta que se va a realizar
-        fun Cargar_Pregunta(){
-
-            barraProgreso.progress = progress
-
-            CampoRest.hint = "Respuesta..."
-
-            //Comprueba que no se han recorrido todos las preguntas del array test
-            if(contador<Test.ListPregunta.size)
-            {
-                // cargar la traduccion del verbo que se esta preguntando
-                TextCambio1.setText(Html.fromHtml(Test.ListPregunta[contador].getVerb().S_Traduccion[0]))
-
-                //Comproaba el tipo de pregunta que se va a cargar
-                //  Si tipo de pregunta es == ?
-                //  == 0 Pregunta el infinitivo del verbo
-                //  == 1 Pregunta el pasado del verbo
-                //  == 2 Pregunta el participio del verbo
-                if (Test.ListPregunta[contador].getTPreguntado() == 0)
-                {
-                    TextCambio2.setText("Cual es el infinitivo de este verbo?")
-                    Tiempo_pregunta = 0
-                }
-                else if (Test.ListPregunta[contador].getTPreguntado() == 1)
-                {
-                    TextCambio2.setText("Cual es el pasado de este verbo?")
-                    Tiempo_pregunta = 1
-                }
-                else if (Test.ListPregunta[contador].getTPreguntado() == 2)
-                {
-                    TextCambio2.setText("Cual es el pasado participio de este verbo?")
-                    Tiempo_pregunta = 2
-                }
-            }
-        }
 
         fun Actualizar_Progress(){
 
@@ -96,17 +62,59 @@ class Test_1 : AppCompatActivity() {
             }
         }
 
-        // llamada a la funcion para que carge la primera pregunta de la lista de preguntas
-        Cargar_Pregunta()
+        // Funcion que carga los datos de la pregunta que se va a realizar
+        fun Cargar_Pregunta(){
 
-        // Inicializa la barra de porgresos a 0.00
-        Actualizar_Progress()
+            // cargo los datos de la barra de progreso para que se mantengan actualizado
+            Actualizar_Progress()
+
+            barraProgreso.progress = progress
+
+            CampoRest.hint = getString(R.string.Respuesta)
+
+            //Comprueba que no se han recorrido todos las preguntas del array test
+            if(contador<Test.ListPregunta.size)
+            {
+                // cargar la traduccion del verbo que se esta preguntando
+                TextCambio1.setText(Html.fromHtml(Test.ListPregunta[contador].getVerb().S_Traduccion[0]))
+
+                //Comproaba el tipo de pregunta que se va a cargar
+                //  Si tipo de pregunta es == ?
+                //  == 0 Pregunta el infinitivo del verbo
+                //  == 1 Pregunta el pasado del verbo
+                //  == 2 Pregunta el participio del verbo
+                if (Test.ListPregunta[contador].getTPreguntado() == 0)
+                {
+                    TextCambio2.setText(getString(R.string.Pregunta_Infi))
+                    Tiempo_pregunta = 0
+                }
+                else if (Test.ListPregunta[contador].getTPreguntado() == 1)
+                {
+                    TextCambio2.setText(getString(R.string.Pregunta_Pasado))
+                    Tiempo_pregunta = 1
+                }
+                else if (Test.ListPregunta[contador].getTPreguntado() == 2)
+                {
+                    TextCambio2.setText(getString(R.string.Pregunta_PParticipio))
+                    Tiempo_pregunta = 2
+                }
+            }
+            camporespuesta.setText("")
+            imm.hideSoftInputFromWindow(camporespuesta.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
+        }
+
+
+        //=========================================================================================//
+        //      llamada a la funcion para que carge la primera pregunta de la lista de preguntas
+        //=========================================================================================//
+        Cargar_Pregunta()
 
         bcomprobar.setOnClickListener({
 
-            var Campo: EditText = findViewById(R.id.camporespuesta)
+            val Campo: EditText = findViewById(R.id.camporespuesta)
+
             val dato = Campo.getText().toString()
-            var dato2 = Test.ListPregunta[contador].getVerb().S_Palabra[Test.ListPregunta[contador].getTPreguntado()].toLowerCase()
+            val dato2 = Test.ListPregunta[contador].getVerb().S_Palabra[Test.ListPregunta[contador].getTPreguntado()].toLowerCase()
 
             if (dato.toLowerCase().equals(dato2))
             {
@@ -131,11 +139,7 @@ class Test_1 : AppCompatActivity() {
                         config_sonido.participle(Test.ListPregunta[contador].getVerb().S_Palabra[0])
                     }
                 }
-
                 contador ++
-                camporespuesta.setText("")
-                imm.hideSoftInputFromWindow(camporespuesta.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
-                Actualizar_Progress()
                 Cargar_Pregunta()
             }
             else
@@ -152,22 +156,16 @@ class Test_1 : AppCompatActivity() {
                     if(disabled_sound == false)
                     {
                         var time:Int = config_sonido.wrong_answer() as Int
-                        contador ++
 
                         var Manejador = Handler().postDelayed({
-                            camporespuesta.setText("")
-                            imm.hideSoftInputFromWindow(camporespuesta.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
+                            contador ++
                             Cargar_Pregunta()
-                            Actualizar_Progress()
                         }, time.toLong())
                     }
                     else
                     {
                         contador ++
-                        camporespuesta.setText("")
-                        imm.hideSoftInputFromWindow(camporespuesta.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
                         Cargar_Pregunta()
-                        Actualizar_Progress()
                     }
                 }
                 else

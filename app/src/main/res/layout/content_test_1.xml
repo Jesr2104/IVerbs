@@ -37,9 +37,10 @@
 
                     <RelativeLayout
                         android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/listverbslayout"
+                        android:layout_height="40dp"
+                        android:background="@drawable/listverbslayout_button"
                         android:layout_alignParentRight="true"
+                        android:layout_marginTop="3dp"
                         android:layout_marginRight="9dp">
 
                         <ImageButton
@@ -72,7 +73,7 @@
                         android:layout_below="@+id/titulotest"
                         android:layout_marginRight="1.2dp"
                         android:layout_marginLeft="1.2dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="5dp"
                         tools:ignore="NotSibling">
 
                         <ProgressBar
@@ -121,7 +122,7 @@
                         <View
                             android:id="@+id/lineaSeparadora"
                             android:layout_width="match_parent"
-                            android:layout_height="5dp"
+                            android:layout_height="2.5dp"
                             android:layout_marginTop="5dp"
                             android:layout_below="@+id/textnpregunta"
                             android:layout_marginLeft="1.2dp"
@@ -163,7 +164,7 @@
                             android:layout_below="@+id/pregunta"
                             android:textColor="#ffffff"
                             android:textStyle="bold|italic"
-                            android:layout_marginTop="25dp"
+                            android:layout_marginTop="20dp"
                             android:layout_centerHorizontal="true"
                             android:background="@drawable/listverbslayoutorange"
                             android:ems="10"
@@ -177,106 +178,13 @@
                             android:layout_height="60dp"
                             android:layout_below="@id/camporespuesta"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="9dp"
                             android:text="Comprobar"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"
                             android:textColor="#3b68aa"
                             android:textStyle="bold|italic"
                             app:fontFamily="sans-serif-condensed" />
 
-                        <LinearLayout
-                            android:id="@+id/sonidos"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="15dp"
-                            android:visibility="gone"
-                            android:layout_below="@id/bcomprobar">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_weight="0.33"
-                                android:gravity="center">
-
-                                <ImageButton
-                                    android:id="@+id/verbopresent"
-                                    android:layout_width="32dp"
-                                    android:background="@android:color/transparent"
-                                    android:layout_height="32dp"
-                                    app:srcCompat="@drawable/song" />
-
-                                <TextView
-                                    android:id="@+id/Datos1Present"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="  Become  "
-                                    android:background="@drawable/listverbslayoutorange"
-                                    android:layout_marginTop="3dp"
-                                    android:textAppearance="@style/TextAppearance.AppCompat"
-                                    android:textColor="#3b68aa"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:fontFamily="sans-serif-condensed" />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_weight="0.33"
-                                android:gravity="center">
-
-
-                                <ImageButton
-                                    android:id="@+id/verbopast"
-                                    android:layout_width="32dp"
-                                    android:background="@android:color/transparent"
-                                    android:layout_height="32dp"
-                                    app:srcCompat="@drawable/song" />
-
-                                <TextView
-                                    android:id="@+id/Datos2Past"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text=" Became "
-                                    android:background="@drawable/listverbslayoutorange"
-                                    android:layout_marginTop="3dp"
-                                    android:textAppearance="@style/TextAppearance.AppCompat"
-                                    android:textColor="#3b68aa"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:fontFamily="sans-serif-condensed" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_weight="0.33"
-                                android:gravity="center">
-
-                                <ImageButton
-                                    android:id="@+id/verbopastparticible"
-                                    android:layout_width="32dp"
-                                    android:background="@android:color/transparent"
-                                    android:layout_height="32dp"
-                                    app:srcCompat="@drawable/song" />
-
-                                <TextView
-                                    android:id="@+id/Datos3PP"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text=" Become "
-                                    android:background="@drawable/listverbslayoutorange"
-                                    android:layout_marginTop="3dp"
-                                    android:textAppearance="@style/TextAppearance.AppCompat"
-                                    android:textColor="#3b68aa"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:fontFamily="sans-serif-condensed" />
-                            </LinearLayout>
-                        </LinearLayout>
                     </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>
