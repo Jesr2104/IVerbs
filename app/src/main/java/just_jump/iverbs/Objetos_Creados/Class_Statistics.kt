@@ -1,6 +1,8 @@
 package just_jump.iverbs.Objetos_Creados
 
-class Class_Statistics()
+import java.io.Serializable
+
+class Class_Statistics(): Serializable
 {
     var num_test_complete:Int = Int.MIN_VALUE
     var num_test_complete_without_error:Int = Int.MIN_VALUE
@@ -64,11 +66,16 @@ class Class_Statistics()
 
     fun numero_de_test_completados()
     {
-
+        //actuializa el numero de test completadoa
     }
 
     fun test_completados_sinfallos()
     {
+        //actualiza el numero de test sin fallos realizado
+    }
 
+    fun actualizar()
+    {
+        //failures and successes
     }
 }

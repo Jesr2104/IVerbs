@@ -9,10 +9,12 @@ import android.text.Html
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import just_jump.iverbs.Objetos_Creados.Class_Test_1
-import kotlinx.android.synthetic.main.activity_test_1.*
-import kotlinx.android.synthetic.main.content_test_1.*
 import java.text.DecimalFormat
 import just_jump.iverbs.Objetos_Creados.Class_Sonidos
+import just_jump.iverbs.Objetos_Creados.Class_Statistics
+import just_jump.iverbs.Objetos_Creados.Class_tools_statistics
+import kotlinx.android.synthetic.main.activity_test_1.*
+import kotlinx.android.synthetic.main.content_test_1.*
 
 class Test_1 : AppCompatActivity() {
 
@@ -36,6 +38,7 @@ class Test_1 : AppCompatActivity() {
         var contador: Int = 0
         var progress: Int = 0
         var Tiempo_pregunta = -1
+        var comprueba_test_Completo: Int = 0
 
         //======================================================================//
         //  Linea de codigo para vizualizar el icono en la action bar
@@ -103,7 +106,6 @@ class Test_1 : AppCompatActivity() {
             imm.hideSoftInputFromWindow(camporespuesta.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
         }
 
-
         //=========================================================================================//
         //      llamada a la funcion para que carge la primera pregunta de la lista de preguntas
         //=========================================================================================//
@@ -111,43 +113,16 @@ class Test_1 : AppCompatActivity() {
 
         bcomprobar.setOnClickListener({
 
-            val Campo: EditText = findViewById(R.id.camporespuesta)
-
-            val dato = Campo.getText().toString()
-            val dato2 = Test.ListPregunta[contador].getVerb().S_Palabra[Test.ListPregunta[contador].getTPreguntado()].toLowerCase()
-
-            if (dato.toLowerCase().equals(dato2))
+            if(Test.ListPregunta.size > comprueba_test_Completo)
             {
-                val text = "Muy Bien!"
-                val duration = Toast.LENGTH_SHORT
+                val Campo: EditText = findViewById(R.id.camporespuesta)
 
-                val toast = Toast.makeText(applicationContext, text, duration)
-                toast.show()
+                val dato = Campo.getText().toString().toLowerCase()
+                val dato2 = Test.ListPregunta[contador].getVerb().S_Palabra[Test.ListPregunta[contador].getTPreguntado()].toLowerCase()
 
-                if(disabled_sound == false)
-                {
-                    if (Tiempo_pregunta == 0)
-                    {
-                        config_sonido.present(Test.ListPregunta[contador].getVerb().S_Palabra[0])
-                    }
-                    else if(Tiempo_pregunta == 1)
-                    {
-                        config_sonido.past(Test.ListPregunta[contador].getVerb().S_Palabra[0])
-                    }
-                    else if (Tiempo_pregunta == 2)
-                    {
-                        config_sonido.participle(Test.ListPregunta[contador].getVerb().S_Palabra[0])
-                    }
-                }
-                contador ++
-                Cargar_Pregunta()
-            }
-            else
-            {
-                if(camporespuesta.text.length > 0)
-                {
-                    // cambiar texto a variable traducible
-                    val text = "La respuesta no es correcta!"
+                if (dato.equals(dato2)) {
+
+                    val text = "Muy Bien!"
                     val duration = Toast.LENGTH_SHORT
 
                     val toast = Toast.makeText(applicationContext, text, duration)
@@ -155,28 +130,112 @@ class Test_1 : AppCompatActivity() {
 
                     if(disabled_sound == false)
                     {
-                        var time:Int = config_sonido.wrong_answer() as Int
-
-                        var Manejador = Handler().postDelayed({
-                            contador ++
-                            Cargar_Pregunta()
-                        }, time.toLong())
+                        if (Tiempo_pregunta == 0)
+                        {
+                            config_sonido.present(Test.ListPregunta[contador].getVerb().S_Palabra[0])
+                        }
+                        else if(Tiempo_pregunta == 1)
+                        {
+                            config_sonido.past(Test.ListPregunta[contador].getVerb().S_Palabra[0])
+                        }
+                        else if (Tiempo_pregunta == 2)
+                        {
+                            config_sonido.participle(Test.ListPregunta[contador].getVerb().S_Palabra[0])
+                        }
                     }
-                    else
-                    {
-                        contador ++
-                        Cargar_Pregunta()
-                    }
+                    contador ++
+                    Cargar_Pregunta()
                 }
-                else
-                {
-                    // cambiar texto a variable traducible
-                    val text = "La respuesta esta vacia.."
-                    val duration = Toast.LENGTH_SHORT
+                else{
+
+                    val text = Test.ListPregunta[contador].getVerb().S_Palabra[Test.ListPregunta[contador].getTPreguntado()]
+                    val duration = Toast.LENGTH_LONG
 
                     val toast = Toast.makeText(applicationContext, text, duration)
                     toast.show()
+
+                    if(camporespuesta.text.length > 0)
+                    {
+                        // cambiar texto a variable traducible
+                        val text = "La respuesta no es correcta!"
+                        val duration = Toast.LENGTH_SHORT
+
+                        val toast = Toast.makeText(applicationContext, text, duration)
+                        toast.show()
+
+                        if(disabled_sound == false)
+                        {
+                            var time:Int = config_sonido.wrong_answer() as Int
+
+                            var Manejador = Handler().postDelayed({
+                                contador ++
+                                Cargar_Pregunta()
+                            }, time.toLong())
+                        }
+                        else
+                        {
+                            contador ++
+                            Cargar_Pregunta()
+                        }
+                    }
+                    else
+                    {
+                        // cambiar texto a variable traducible
+                        val text = "La respuesta esta vacia.."
+                        val duration = Toast.LENGTH_SHORT
+
+                        val toast = Toast.makeText(applicationContext, text, duration)
+                        toast.show()
+                    }
                 }
+
+                comprueba_test_Completo++
+
+                if(comprueba_test_Completo == Test.ListPregunta.size)
+                {
+                    val text = "Prueba Finalizada!"
+                    val duration = Toast.LENGTH_SHORT
+                    val statistics_Obj:Class_Statistics
+                    val tools_dataserializar: Class_tools_statistics = Class_tools_statistics(this)
+
+                    val toast = Toast.makeText(applicationContext, text, duration)
+                    toast.show()
+
+                    // cargar el objetos estadisticas
+                    statistics_Obj = tools_dataserializar.deserializarobjeto()
+
+                    statistics_Obj.actualizar()
+
+
+                    /***     Quedo por aqui       ***/
+                    /***     Quedo por aqui       ***/
+                    /***     Quedo por aqui       ***/
+                    /***     Quedo por aqui       ***/
+                    /***     Quedo por aqui       ***/
+                    /***     Quedo por aqui       ***/
+                    /***     Quedo por aqui       ***/
+
+
+
+                    // Actualizar fallos
+                    // Actualizar aciertos
+                    // Actualizar prueba terminada
+                    // Actualizar prueba terminada sin fallos
+                    // Actualizar prueba terminada
+                    // Actualizar porcentaje_palabras_apredidas
+                    // Actualizar Palabras usadas en el test
+
+                    // Serializar objeto actualizado
+
+                    // Mostrar estadisticas de la prueba
+                        // aciertos
+                        // falllos
+                        // relacion de la prueba contestada con exito
+                }
+            }
+            else
+            {
+                // cuando se precione el boton comprobar pero la prueba ha terminado!!!
             }
         })
 
@@ -194,7 +253,6 @@ class Test_1 : AppCompatActivity() {
             }
         })
     }
-
     override fun onBackPressed() {
 
         val mensaje = AlertDialog.Builder(this)
