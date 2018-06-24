@@ -73,14 +73,14 @@
                         android:layout_below="@+id/titulotest"
                         android:layout_marginRight="1.2dp"
                         android:layout_marginLeft="1.2dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="3dp"
                         tools:ignore="NotSibling">
 
                         <ProgressBar
                             android:id="@+id/progressBar3"
                             style="@android:style/Widget.ProgressBar.Horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="28dp"
+                            android:layout_height="15dp"
                             android:progress="25"
                             android:progressDrawable="@drawable/myprogressbar" />
 
@@ -90,7 +90,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:layout_centerInParent="true"
-                            android:layout_marginTop="9dp"
+                            android:layout_marginTop="1dp"
                             android:text="25%"
                             android:textAppearance="@style/TextAppearance.AppCompat"
                             android:textColor="#ffffff"
@@ -104,7 +104,7 @@
                         android:background="@drawable/marcopreguntas"
                         android:layout_alignParentRight="true"
                         android:layout_below="@id/barraprogreso"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="6dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp">
 
@@ -135,11 +135,11 @@
                             android:layout_height="wrap_content"
                             android:text="Traduccion"
                             android:layout_below="@+id/lineaSeparadora"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="9dp"
                             android:layout_centerHorizontal="true"
                             android:textAlignment="center"
                             android:textSize="18sp"
-                            android:textColor="#3b68aa"
+                            android:textColor="#ec8e1d"
                             android:textStyle="bold|italic"
                             app:fontFamily="sans-serif-condensed"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
@@ -164,7 +164,7 @@
                             android:layout_below="@+id/pregunta"
                             android:textColor="#ffffff"
                             android:textStyle="bold|italic"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="15dp"
                             android:layout_centerHorizontal="true"
                             android:background="@drawable/listverbslayoutorange"
                             android:ems="10"
@@ -175,10 +175,9 @@
                         <Button
                             android:id="@+id/bcomprobar"
                             android:layout_width="140dp"
-                            android:layout_height="60dp"
+                            android:layout_height="50dp"
                             android:layout_below="@id/camporespuesta"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="9dp"
                             android:text="Comprobar"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large"
                             android:textColor="#3b68aa"

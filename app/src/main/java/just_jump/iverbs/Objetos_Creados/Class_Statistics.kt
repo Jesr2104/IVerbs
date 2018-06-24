@@ -1,12 +1,10 @@
 package just_jump.iverbs.Objetos_Creados
 
-import java.io.Serializable
-
-class Class_Statistics(): Serializable
+class Class_Statistics()
 {
     var num_test_complete:Int = Int.MIN_VALUE
     var num_test_complete_without_error:Int = Int.MIN_VALUE
-    var porcentaje_palabras_apredidas:Int = Int.MIN_VALUE
+    var porcentaje_palabras_aprendidas:Int = Int.MIN_VALUE
 
     val dictverbs_wrong = HashMap<String , Int>()
     val dictverbs_correct = HashMap<String , Int>()
@@ -16,6 +14,11 @@ class Class_Statistics(): Serializable
 
     init
     {
+        num_test_complete = 0
+        num_test_complete_without_error = 0
+        porcentaje_palabras_aprendidas = 0
+
+
         // Creo una lista con todos los verbos irregulares con todos los verbos y sus tiempos 96 verbos en 3 tiempos 96 x 3 = 288
         var wordlist= listverb.split(";")
 
@@ -64,18 +67,85 @@ class Class_Statistics(): Serializable
 
     }
 
-    fun numero_de_test_completados()
+    fun getNTest():Int
     {
-        //actuializa el numero de test completadoa
+        return num_test_complete
     }
 
-    fun test_completados_sinfallos()
+    fun getNTestwithouterror():Int
     {
-        //actualiza el numero de test sin fallos realizado
+        return num_test_complete_without_error
     }
 
-    fun actualizar()
+    fun getListUsedVerb():HashMap<String , Int>
     {
+        return dictverbs_usered
+    }
+
+    fun getListwrong():HashMap<String , Int>
+    {
+        return dictverbs_wrong
+    }
+
+    fun getListcorrect():HashMap<String , Int>
+    {
+        return dictverbs_correct
+    }
+
+    fun actualizar(List: HashMap<String , Int>)
+    {
+        var contador = List.size
+        var cont = 0
+        var comprueba = false
+
+        // incrementa el numero test completado
+        num_test_complete ++
+
+        //------------------------------------------------------------------------------------------
         //failures and successes
+        //------------------------------------------------------------------------------------------
+        for (Item in List)
+        {
+            if(Item.value == 0)
+            {
+                dictverbs_correct.set(Item.key,dictverbs_correct.getValue(Item.key)+1)
+            }
+            else if(Item.value == 1)
+            {
+                dictverbs_wrong.set(Item.key,dictverbs_wrong.getValue(Item.key)+1)
+            }
+        }
+
+        //------------------------------------------------------------------------------------------
+        // cuenta el numero de veces que se termina un test sin errores
+        //------------------------------------------------------------------------------------------
+        for (Item in List)
+        {
+            if (Item.value == 1)
+            {
+                comprueba = true
+            }
+        }
+        if(comprueba == false)
+        {
+            num_test_complete_without_error += 1
+        }
+
+        //------------------------------------------------------------------------------------------
+        // cuenta el numero de veces que es usada una palabra en un test
+        //------------------------------------------------------------------------------------------
+        for (Item in List)
+        {
+            dictverbs_usered.set(Item.key,dictverbs_usered.getValue(Item.key)+1)
+        }
+
+        //------------------------------------------------------------------------------------------
+        // Actualizar fallos
+        // Actualizar aciertos
+        // Actualizar prueba terminada
+        // Actualizar prueba terminada sin fallos
+        // Actualizar Palabras usadas en el test
+        // Actualizar porcentaje_palabras_aprendidas     ->  ->  ->  ->  -> "Falta Por Solucionar"
+        //------------------------------------------------------------------------------------------
     }
 }

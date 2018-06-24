@@ -39,6 +39,7 @@ class Test_1 : AppCompatActivity() {
         var progress: Int = 0
         var Tiempo_pregunta = -1
         var comprueba_test_Completo: Int = 0
+        var listFA = HashMap<String , Int>()
 
         //======================================================================//
         //  Linea de codigo para vizualizar el icono en la action bar
@@ -75,7 +76,7 @@ class Test_1 : AppCompatActivity() {
 
             CampoRest.hint = getString(R.string.Respuesta)
 
-            //Comprueba que no se han recorrido todos las preguntas del array test
+            //Comprueba que se han recorrido todos las preguntas del array test por lo tanto el test ha finalizado
             if(contador<Test.ListPregunta.size)
             {
                 // cargar la traduccion del verbo que se esta preguntando
@@ -120,6 +121,7 @@ class Test_1 : AppCompatActivity() {
                 val dato = Campo.getText().toString().toLowerCase()
                 val dato2 = Test.ListPregunta[contador].getVerb().S_Palabra[Test.ListPregunta[contador].getTPreguntado()].toLowerCase()
 
+                // cuando la respuesta es correcta
                 if (dato.equals(dato2)) {
 
                     val text = "Muy Bien!"
@@ -127,6 +129,8 @@ class Test_1 : AppCompatActivity() {
 
                     val toast = Toast.makeText(applicationContext, text, duration)
                     toast.show()
+
+                    listFA.put(dato2,0)
 
                     if(disabled_sound == false)
                     {
@@ -143,9 +147,11 @@ class Test_1 : AppCompatActivity() {
                             config_sonido.participle(Test.ListPregunta[contador].getVerb().S_Palabra[0])
                         }
                     }
-                    contador ++
+                    contador += 1
                     Cargar_Pregunta()
+                    comprueba_test_Completo+= 1
                 }
+                //cuando la respuesta es incorrecta o esta vacia
                 else{
 
                     val text = Test.ListPregunta[contador].getVerb().S_Palabra[Test.ListPregunta[contador].getTPreguntado()]
@@ -163,20 +169,23 @@ class Test_1 : AppCompatActivity() {
                         val toast = Toast.makeText(applicationContext, text, duration)
                         toast.show()
 
+                        listFA.put(dato2,1)
+
                         if(disabled_sound == false)
                         {
                             var time:Int = config_sonido.wrong_answer() as Int
 
                             var Manejador = Handler().postDelayed({
-                                contador ++
+                                contador += 1
                                 Cargar_Pregunta()
                             }, time.toLong())
                         }
                         else
                         {
-                            contador ++
+                            contador += 1
                             Cargar_Pregunta()
                         }
+                        comprueba_test_Completo+= 1
                     }
                     else
                     {
@@ -189,13 +198,14 @@ class Test_1 : AppCompatActivity() {
                     }
                 }
 
-                comprueba_test_Completo++
-
+                // cuando el test ha sido terminado
                 if(comprueba_test_Completo == Test.ListPregunta.size)
                 {
                     val text = "Prueba Finalizada!"
                     val duration = Toast.LENGTH_SHORT
-                    val statistics_Obj:Class_Statistics
+                    var statistics_Obj:Class_Statistics
+
+                    // objeto para poder crear la serializacion del objeto estadistica en memoria
                     val tools_dataserializar: Class_tools_statistics = Class_tools_statistics(this)
 
                     val toast = Toast.makeText(applicationContext, text, duration)
@@ -204,33 +214,62 @@ class Test_1 : AppCompatActivity() {
                     // cargar el objetos estadisticas
                     statistics_Obj = tools_dataserializar.deserializarobjeto()
 
-                    statistics_Obj.actualizar()
+                    // Actualizar
+                    statistics_Obj.actualizar(listFA)
 
+                    // serializa el objeto estadistica una ves actializado
+                    tools_dataserializar.serializarobjeto(statistics_Obj)
 
-                    /***     Quedo por aqui       ***/
-                    /***     Quedo por aqui       ***/
-                    /***     Quedo por aqui       ***/
-                    /***     Quedo por aqui       ***/
-                    /***     Quedo por aqui       ***/
-                    /***     Quedo por aqui       ***/
-                    /***     Quedo por aqui       ***/
+                    /****************************************************************************************************************************************/
+                    /**         Prueba Visualizacion                                                                                                       **/
+                    /****************************************************************************************************************************************/
+                    //===================================================================================
+                    // objeto nue con los datos del objeto guardado
+                    //===================================================================================
+                    /*var new: Class_Statistics = tools_dataserializar.deserializarobjeto()
 
+                    val toastnew = Toast.makeText(applicationContext, "Numero de Test Completado => "+new.getNTest(), duration)
+                    toastnew.show()
+                    val toastnew1 = Toast.makeText(applicationContext, "Numero de Test Completado sin fallos => "+new.getNTestwithouterror(), duration)
+                    toastnew1.show()
 
+                    for(Item in new.getListcorrect())
+                    {
+                        if (Item.value != 0)
+                        {
+                            val toastnew1 = Toast.makeText(applicationContext, "Verbos correctos => "+Item.key+" -> "+Item.value, duration)
+                            toastnew1.show()
+                        }
+                    }
 
-                    // Actualizar fallos
-                    // Actualizar aciertos
-                    // Actualizar prueba terminada
-                    // Actualizar prueba terminada sin fallos
-                    // Actualizar prueba terminada
-                    // Actualizar porcentaje_palabras_apredidas
-                    // Actualizar Palabras usadas en el test
+                    for(Item in new.getListwrong())
+                    {
+                        if (Item.value != 0)
+                        {
+                            val toastnew1 = Toast.makeText(applicationContext, "Verbos fallados => "+Item.key+" -> "+Item.value, duration)
+                            toastnew1.show()
+                        }
+                    }
 
-                    // Serializar objeto actualizado
+                    for(Item in new.getListUsedVerb())
+                    {
+                        if (Item.value != 0)
+                        {
+                            val toastnew1 = Toast.makeText(applicationContext, "Verbos usados => "+Item.key+" -> "+Item.value, duration)
+                            toastnew1.show()
+                        }
+                    }*/
+                    /****************************************************************************************************************************************/
+                    /****************************************************************************************************************************************/
+
+                    var Manejador = Handler().postDelayed({
+                        finish()
+                    },2000)
 
                     // Mostrar estadisticas de la prueba
-                        // aciertos
-                        // falllos
-                        // relacion de la prueba contestada con exito
+                    // aciertos
+                    // falllos
+                    // relacion de la prueba contestada con exito
                 }
             }
             else

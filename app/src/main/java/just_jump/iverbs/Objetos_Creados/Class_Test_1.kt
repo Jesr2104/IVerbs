@@ -12,8 +12,8 @@ class Class_Test_1(val context: Context)
     var Gnera_rand = Random()
 
     // variable de porsetajes de proguntas
-    var PxDificiles = 0.10
-    var PxFaciles = 0.00
+    var PxDificiles = 0.30
+    var PxFaciles = 0.30
     var PxMasFalladas = 0.20
     var PxMenosUsadas = 0.20
 
