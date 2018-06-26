@@ -430,7 +430,7 @@ class Class_ListIVerb(val context: Context)
     }
 
     //--------------------------------------------------------------------------------------------------
-    // Funcion para saber el numero de elementos
+    // Funcion para obtener un elementos
     //--------------------------------------------------------------------------------------------------
     @Override
     fun getItem(position: Int): Any
@@ -439,7 +439,7 @@ class Class_ListIVerb(val context: Context)
     }
 
     //--------------------------------------------------------------------------------------------------
-    // Funcion para saber el numero de elementos
+    // Funcion para buscar un elementos por el presente
     //--------------------------------------------------------------------------------------------------
     @Override
     fun get_SVerbs(nameverb: String): Class_IVerb?
@@ -447,6 +447,28 @@ class Class_ListIVerb(val context: Context)
         if(!ListIVerb.isEmpty()) {
             for (item in ListIVerb){
                 if (item.S_Palabra[0].toUpperCase().equals(nameverb.toUpperCase()))
+                {
+                    return item
+                }
+            }
+        }
+        return null
+    }
+
+    //--------------------------------------------------------------------------------------------------
+    // Funcion para buscar un elementos por cualquier tiempo verbal
+    //--------------------------------------------------------------------------------------------------
+    fun getVerbs(Nverb: String): Class_IVerb?
+    {
+        if(!ListIVerb.isEmpty())
+        {
+            for(item in ListIVerb)
+            {
+                var present = item.S_Palabra[0].toUpperCase().equals(Nverb.toUpperCase())
+                var past = item.S_Palabra[1].toUpperCase().equals(Nverb.toUpperCase())
+                var pparticipio = item.S_Palabra[2].toUpperCase().equals(Nverb.toUpperCase())
+
+                if(present or past or pparticipio)
                 {
                     return item
                 }

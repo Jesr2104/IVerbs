@@ -12,7 +12,7 @@ import just_jump.iverbs.Objetos_Creados.Class_Test_1
 import java.text.DecimalFormat
 import just_jump.iverbs.Objetos_Creados.Class_Sonidos
 import just_jump.iverbs.Objetos_Creados.Class_Statistics
-import just_jump.iverbs.Objetos_Creados.Class_tools_statistics
+import just_jump.iverbs.Objetos_Creados.Class_SL_Data
 import kotlinx.android.synthetic.main.activity_test_1.*
 import kotlinx.android.synthetic.main.content_test_1.*
 
@@ -203,30 +203,30 @@ class Test_1 : AppCompatActivity() {
                 {
                     val text = "Prueba Finalizada!"
                     val duration = Toast.LENGTH_SHORT
-                    var statistics_Obj:Class_Statistics
+                    var statistics_object:Class_Statistics
 
                     // objeto para poder crear la serializacion del objeto estadistica en memoria
-                    val tools_dataserializar: Class_tools_statistics = Class_tools_statistics(this)
+                    val tools_Save_Load: Class_SL_Data = Class_SL_Data(this)
 
                     val toast = Toast.makeText(applicationContext, text, duration)
                     toast.show()
 
                     // cargar el objetos estadisticas
-                    statistics_Obj = tools_dataserializar.deserializarobjeto()
+                    statistics_object = tools_Save_Load.Data_Load()
 
                     // Actualizar
-                    statistics_Obj.actualizar(listFA)
+                    statistics_object.actualizar(listFA)
 
                     // serializa el objeto estadistica una ves actializado
-                    tools_dataserializar.serializarobjeto(statistics_Obj)
+                    tools_Save_Load.Data_Save(statistics_object)
 
                     /****************************************************************************************************************************************/
                     /**         Prueba Visualizacion                                                                                                       **/
                     /****************************************************************************************************************************************/
-                    //===================================================================================
+                    /*//===================================================================================
                     // objeto nue con los datos del objeto guardado
                     //===================================================================================
-                    /*var new: Class_Statistics = tools_dataserializar.deserializarobjeto()
+                    var new: Class_Statistics = tools_Save_Load.Data_Load()
 
                     val toastnew = Toast.makeText(applicationContext, "Numero de Test Completado => "+new.getNTest(), duration)
                     toastnew.show()

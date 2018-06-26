@@ -4,9 +4,9 @@ import android.content.Context
 import android.widget.Toast
 import com.google.gson.Gson
 
-class Class_tools_statistics(val context: Context)
+class Class_SL_Data(val context: Context)
 {
-    fun serializarobjeto(new_statistics: Class_Statistics)
+    fun Data_Save(new_statistics: Class_Statistics)
     {
         val prefs_Save = context.getSharedPreferences("Datos_Estadisticos", Context.MODE_PRIVATE)
         val editor = prefs_Save.edit()
@@ -19,7 +19,7 @@ class Class_tools_statistics(val context: Context)
         editor.commit()
     }
 
-    fun deserializarobjeto(): Class_Statistics
+    fun Data_Load(): Class_Statistics
     {
         val prefs_Load = context.getSharedPreferences("Datos_Estadisticos", Context.MODE_PRIVATE)
         val gson = Gson()
@@ -28,7 +28,7 @@ class Class_tools_statistics(val context: Context)
         if(json == "DEFAULT")
         {
             var New:Class_Statistics = Class_Statistics()
-            serializarobjeto(New)
+            Data_Save(New)
             json = gson.toJson(New)
 
             val toast = Toast.makeText(context, "Primera vez", Toast.LENGTH_LONG)
