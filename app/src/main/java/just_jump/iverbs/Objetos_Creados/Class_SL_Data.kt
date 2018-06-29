@@ -6,7 +6,18 @@ import com.google.gson.Gson
 
 class Class_SL_Data(val context: Context)
 {
-    fun Data_Save(new_statistics: Class_Statistics)
+    var ListaVerb_Completa: Class_ListIVerb = Class_ListIVerb(context)
+
+    fun ValidarData(): Boolean
+    {
+        val prefs_Load = context.getSharedPreferences("Datos_Estadisticos", Context.MODE_PRIVATE)
+        return prefs_Load.contains("statistics")
+
+        // true cuando el fichero exite
+        // false cuando no exite
+    }
+
+    fun Data_Save(new_statistics: Estadisticas_nueva_Clase)
     {
         val prefs_Save = context.getSharedPreferences("Datos_Estadisticos", Context.MODE_PRIVATE)
         val editor = prefs_Save.edit()
@@ -19,22 +30,13 @@ class Class_SL_Data(val context: Context)
         editor.commit()
     }
 
-    fun Data_Load(): Class_Statistics
+    fun Data_Load(): Estadisticas_nueva_Clase
     {
         val prefs_Load = context.getSharedPreferences("Datos_Estadisticos", Context.MODE_PRIVATE)
         val gson = Gson()
 
-        var json = prefs_Load.getString("statistics", "DEFAULT")
-        if(json == "DEFAULT")
-        {
-            var New:Class_Statistics = Class_Statistics()
-            Data_Save(New)
-            json = gson.toJson(New)
-
-            val toast = Toast.makeText(context, "Primera vez", Toast.LENGTH_LONG)
-            toast.show()
-        }
-        val statistics = gson.fromJson<Class_Statistics>(json, Class_Statistics::class.java!!)
+        val json = prefs_Load.getString("statistics", "DEFAULT")
+        val statistics = gson.fromJson<Estadisticas_nueva_Clase>(json, Estadisticas_nueva_Clase::class.java!!)
 
         return statistics
     }

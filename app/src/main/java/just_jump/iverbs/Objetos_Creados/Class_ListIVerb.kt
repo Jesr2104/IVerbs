@@ -75,8 +75,6 @@ class Class_ListIVerb(val context: Context)
                 numero_dificiles++
             }
         }
-
-        print("hola")
     }
 
     //--------------------------------------------------------------------------------------------------

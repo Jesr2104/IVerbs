@@ -6,9 +6,9 @@ class Class_Statistics()
     var num_test_complete_without_error:Int = Int.MIN_VALUE
     var porcentaje_palabras_aprendidas:Int = Int.MIN_VALUE
 
-    val dictverbs_wrong = HashMap<String , Int>()
-    val dictverbs_correct = HashMap<String , Int>()
-    val dictverbs_usered = HashMap<String , Int>()
+    var dictverbs_wrong = HashMap<String , Int>()
+    var dictverbs_correct = HashMap<String , Int>()
+    var dictverbs_usered = HashMap<String , Int>()
 
     val listverb = "arise;arose;arisen;be;was/were;been;beat;beat;beaten;become;became;become;begin;began;begun;bet;betted/bet;betted/bet;bite;bit;bitten;bleed;bled;bled;blow;blew;blown;break;broke;broken;breed;bred;bred;bring;brought;brought;build;built;built;burn;burnt;burnt;buy;bought;bought;catch;caught;caught;choose;chose;chosen;come;came;come;cost;cost;cost;cut;cut;cut;deal;dealt;dealt;dig;dug;dug;do;did;done;draw;drew;drawn;dream;dreamed/dreamt;dreamed/dreamt;drink;drank;drunk;drive;drove;driven;eat;ate;eaten;fall;fell;fallen;feed;fed;fed;feel;felt;felt;fight;fought;fought;find;found;found;fly;flew;flown;forbid;forbade;forbidden;forget;forgot;forgotten;forgive;forgave;forgiven;freeze;froze;frozen;get;got;gotten;give;gave;given;go;went;gone;grind;ground;ground;grow;grew;grown;have;had;had;hear;heard;heard;hide;hid;hidden;hit;hit;hit;hold;held;held;hurt;hurt;hurt;keep;kept;kept;know;knew;known;learn;learned/learnt;learned/learnt;leave;left;left;let;let;let;lose;lost;lost;make;made;made;mean;meant;meant;meet;met;met;pay;paid;paid;put;put;put;read;read;read;ride;rode;ridden;ring;rang;rung;rise;rose;risen;run;ran;run;say;said;said;see;saw;seen;sell;sold;sold;send;sent;sent;set;set;set;shine;shone;shone;shoot;shot;shot;show;showed;shown;shut;shut;shut;sing;sang;sung;sit;sat;sat;sleep;slept;slept;speak;spoke;spoken;spell;spelt;spelt;spend;spent;spent;stand;stood;stood;steal;stole;stolen;stick;stuck;stuck;swim;swam;swum;swing;swung;swung;take;took;taken;teach;taught;taught;tell;told;told;think;thought;thought;throw;threw;thrown;understand;understood;understood;wake;woke;woken;wear;wore;worn;win;won;won;wring;wrung;wrung;write;wrote;written"
 
@@ -18,9 +18,9 @@ class Class_Statistics()
         num_test_complete_without_error = 0
         porcentaje_palabras_aprendidas = 0
 
-
         // Creo una lista con todos los verbos irregulares con todos los verbos y sus tiempos 96 verbos en 3 tiempos 96 x 3 = 288
         var wordlist= listverb.split(";")
+
 
         // Crear el "Hash Map" con el cada uno de los indices para los verbos y con el valor 0 ##( write = 0 )##
         // Inicializa la variable a 0 donde se almecenara el numero de fallos por cada palabra.
@@ -102,7 +102,7 @@ class Class_Statistics()
         num_test_complete ++
 
         //------------------------------------------------------------------------------------------
-        //failures and successes
+        //  failures and successes
         //------------------------------------------------------------------------------------------
         for (Item in List)
         {
@@ -117,7 +117,7 @@ class Class_Statistics()
         }
 
         //------------------------------------------------------------------------------------------
-        // cuenta el numero de veces que se termina un test sin errores
+        //  cuenta el numero de veces que se termina un test sin errores
         //------------------------------------------------------------------------------------------
         for (Item in List)
         {
@@ -132,7 +132,7 @@ class Class_Statistics()
         }
 
         //------------------------------------------------------------------------------------------
-        // cuenta el numero de veces que es usada una palabra en un test
+        //  cuenta el numero de veces que es usada una palabra en un test
         //------------------------------------------------------------------------------------------
         for (Item in List)
         {

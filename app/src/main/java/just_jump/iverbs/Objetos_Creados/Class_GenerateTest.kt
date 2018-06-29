@@ -3,20 +3,22 @@ package just_jump.iverbs.Objetos_Creados
 import android.content.Context
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
-class Class_Test_1(val context: Context)
+class Class_GenerateTest(val context: Context)
 {
     var ListPregunta = mutableListOf<Class_Pregunta>()
     val ListaVerb_Completa: Class_ListIVerb = Class_ListIVerb(context)
     val numeroPregunta = 20
     var Gnera_rand = Random()
 
+    var tools: Class_SL_Data = Class_SL_Data(context)
+    var newliston = tools.Data_Load()
+
     // variable de porsetajes de proguntas
-    var PxDificiles = 0.30
-    var PxFaciles = 0.30
-    var PxMasFalladas = 0.20
-    var PxMenosUsadas = 0.20
+    var PxDificiles = 0.10
+    var PxFaciles = 0.10
+    var PxMasFalladas = 0.10
+    var PxMenosUsadas = 0.10
 
     init
     {
@@ -29,6 +31,7 @@ class Class_Test_1(val context: Context)
         var Numero_rand = 0
         var pregunta = 0
         var contador = 0
+        var cont = 0
 
         //========================================================================================
         //==        Conseguimos los 30% de las preguntas dificiles
@@ -80,112 +83,92 @@ class Class_Test_1(val context: Context)
         //========================================================================================
         //==        Conseguimos los 20% de las preguntas mas falladas
         //========================================================================================
-        var ListaMFalladosOrder = Orderlist()
+        var Listar_Ordenada = newliston.Orderlist(1)
         var ListaMFallados: ArrayList<Class_IVerb> = ArrayList()
-        contador = 0
 
-        for (item in ListaMFalladosOrder)
+        for (item in Listar_Ordenada)
         {
-            ListaMFallados.add(ListaVerb_Completa.getVerbs(item.key)!!)
+            ListaMFallados.add(ListaVerb_Completa.getVerbs(item.NVerb)!!)
         }
+
+        contador=0
+        cont=0
 
         while (contador < (numeroPregunta * PxMasFalladas))
         {
+            var nueva_pregunta: Class_Pregunta = Class_Pregunta(pregunta,ListaMFallados[cont])
             pregunta = Gnera_rand.nextInt(3)
 
-            var nueva_pregunta: Class_Pregunta = Class_Pregunta(pregunta,ListaMFallados[contador])
-            ListPregunta.add(nueva_pregunta)
-            contador ++
+            if(Check_repeated(nueva_pregunta))
+            {
+                ListPregunta.add(nueva_pregunta)
+                contador ++
+            }
+            else
+            {
+                cont++
+            }
         }
+
         //========================================================================================
 
         //========================================================================================
         //==        Conseguimos los 20% de las preguntas menos usadas
         //========================================================================================
-        //contador = 0
-        //var ListaMUsadas: ArrayList<Class_IVerb> = ArrayList()
+        var Listar_Ordenada_usados = newliston.Orderlist(2)
+        var ListaMUsados: ArrayList<Class_IVerb> = ArrayList()
+        contador = Listar_Ordenada_usados.size -1
+
+        while(cont < Listar_Ordenada_usados.size)
+        {
+            ListaMUsados.add(ListaVerb_Completa.getVerbs(Listar_Ordenada_usados[contador].NVerb)!!)
+            contador--
+            cont++
+        }
+
+        contador=0
+        cont=0
+
+        while (contador < (numeroPregunta * PxMenosUsadas))
+        {
+            var nueva_pregunta: Class_Pregunta = Class_Pregunta(pregunta,ListaMUsados[cont])
+            pregunta = Gnera_rand.nextInt(3)
+
+            if(Check_repeated(nueva_pregunta))
+            {
+                ListPregunta.add(nueva_pregunta)
+                contador ++
+            }
+            else
+            {
+                cont++
+            }
+        }
 
         //========================================================================================
-
     }
 
-    fun Orderlist():HashMap<String,Int>{
-
-        class contenedor_data
+    // funcion para chequear si el verbo que se va a agregar ua existe o no en las lista
+    fun Check_repeated(Pregunta:Class_Pregunta): Boolean
+    {
+        for(Item in ListPregunta)
         {
-            var Numero: Int = 0
-            var NVerb: String = ""
-        }
-        var numberArray:ArrayList<contenedor_data> = ArrayList()
-
-        var tools: Class_SL_Data = Class_SL_Data(context)
-        var LoadStatisticas:Class_Statistics = tools.Data_Load()
-        var list = LoadStatisticas.getListwrong()
-        var listEmpty = HashMap<String , Int>()
-        var temporal:contenedor_data = contenedor_data()
-
-        if (list != null){
-
-            for(Item in list)
+            if(Item.getVerb().S_Palabra.equals(Pregunta.getVerb().S_Palabra))
             {
-                /*val toast = Toast.makeText(context, Item.key.toUpperCase() + " Valor =>" + Item.value, Toast.LENGTH_SHORT)
-                toast.show()*/
-
-                //Creo un elemento de tipo contenedor_data
-                var newElement:contenedor_data = contenedor_data()
-
-                newElement.Numero = Item.value
-                newElement.NVerb = Item.key
-
-                numberArray.add(newElement)
+                return false
             }
         }
-
-        for (i in 0 until numberArray.size) {
-            for (j in 1 until numberArray.size - i) {
-
-                if (numberArray[j - 1].Numero < numberArray[j].Numero)
-                {
-                    temporal = numberArray[j - 1]
-                    numberArray[j - 1] = numberArray[j]
-                    numberArray[j] = temporal
-                }
-            }
-        }
-
-        /*for(item in numberArray){
-            if(item.Numero != 0)
-            {
-                val toast = Toast.makeText(context, "Numero => "+item.NVerb  + " Numero => "+item.Numero, Toast.LENGTH_SHORT)
-                toast.show()
-            }
-        }*/
-
-        for(Item in numberArray)
-        {
-            listEmpty.put(Item.NVerb,Item.Numero)
-        }
-
-        return listEmpty
+        return true
     }
 
-    fun palabras_masFalladas()
+    fun getNewpregunta(): Class_Pregunta
     {
+        var pregunta = Gnera_rand.nextInt(3)
+        var Numero_rand = Gnera_rand.nextInt(ListaVerb_Completa.ListIVerb.size)
 
-    }
+        var newpregunta:Class_Pregunta = Class_Pregunta(pregunta,ListaVerb_Completa.ListIVerb.get(Numero_rand))
 
-    fun palabras_menosUsadas()
-    {
-
-    }
-
-    fun palabras_dificiles()
-    {
-
-    }
-
-    fun palabras_faciles()
-    {
+        return newpregunta
 
     }
 }

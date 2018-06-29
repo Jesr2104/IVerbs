@@ -8,11 +8,8 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Html
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import just_jump.iverbs.Objetos_Creados.Class_Test_1
+import just_jump.iverbs.Objetos_Creados.*
 import java.text.DecimalFormat
-import just_jump.iverbs.Objetos_Creados.Class_Sonidos
-import just_jump.iverbs.Objetos_Creados.Class_Statistics
-import just_jump.iverbs.Objetos_Creados.Class_SL_Data
 import kotlinx.android.synthetic.main.activity_test_1.*
 import kotlinx.android.synthetic.main.content_test_1.*
 
@@ -24,7 +21,7 @@ class Test_1 : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         //  Cargamos los datos con la lista de todos lo verbos a preguntar
-        var Test: Class_Test_1 = Class_Test_1(this)
+        var Test: Class_GenerateTest = Class_GenerateTest(this)
         val CampoRest: EditText = findViewById(R.id.camporespuesta)
         val TextCambio1: TextView = findViewById(R.id.traduccion)
         val TextCambio2: TextView = findViewById(R.id.pregunta)
@@ -39,7 +36,7 @@ class Test_1 : AppCompatActivity() {
         var progress: Int = 0
         var Tiempo_pregunta = -1
         var comprueba_test_Completo: Int = 0
-        var listFA = HashMap<String , Int>()
+        var temp:ArrayList<Contenedor_data> = ArrayList()
 
         //======================================================================//
         //  Linea de codigo para vizualizar el icono en la action bar
@@ -130,7 +127,13 @@ class Test_1 : AppCompatActivity() {
                     val toast = Toast.makeText(applicationContext, text, duration)
                     toast.show()
 
-                    listFA.put(dato2,0)
+                    var verbTemp:Contenedor_data = Contenedor_data()
+                    verbTemp.NVerb = dato2
+                    verbTemp.Numero = 0
+                    verbTemp.Tiempo = Tiempo_pregunta
+
+                    temp.add(verbTemp)
+
 
                     if(disabled_sound == false)
                     {
@@ -154,11 +157,8 @@ class Test_1 : AppCompatActivity() {
                 //cuando la respuesta es incorrecta o esta vacia
                 else{
 
-                    val text = Test.ListPregunta[contador].getVerb().S_Palabra[Test.ListPregunta[contador].getTPreguntado()]
+                    val text_palabrasCorrecta = Test.ListPregunta[contador].getVerb().S_Palabra[Test.ListPregunta[contador].getTPreguntado()]
                     val duration = Toast.LENGTH_LONG
-
-                    val toast = Toast.makeText(applicationContext, text, duration)
-                    toast.show()
 
                     if(camporespuesta.text.length > 0)
                     {
@@ -169,7 +169,22 @@ class Test_1 : AppCompatActivity() {
                         val toast = Toast.makeText(applicationContext, text, duration)
                         toast.show()
 
-                        listFA.put(dato2,1)
+                        val toast1 = Toast.makeText(applicationContext, text_palabrasCorrecta, duration)
+                        toast1.show()
+
+                        // si la pregunta no es correcta entonce agrego dos pregunta una
+                        // aleatorial y la pregunta que se ha fallado
+                        //--------------------------------------------------------------------------
+                        Test.ListPregunta.add(Test.ListPregunta[contador])
+                        Test.ListPregunta.add(Test.getNewpregunta())
+                        //--------------------------------------------------------------------------
+
+                        var verbTemp:Contenedor_data = Contenedor_data()
+                        verbTemp.NVerb = dato2
+                        verbTemp.Numero = 1
+                        verbTemp.Tiempo = Tiempo_pregunta
+
+                        temp.add(verbTemp)
 
                         if(disabled_sound == false)
                         {
@@ -203,7 +218,8 @@ class Test_1 : AppCompatActivity() {
                 {
                     val text = "Prueba Finalizada!"
                     val duration = Toast.LENGTH_SHORT
-                    var statistics_object:Class_Statistics
+
+                    var statistics_object:Estadisticas_nueva_Clase
 
                     // objeto para poder crear la serializacion del objeto estadistica en memoria
                     val tools_Save_Load: Class_SL_Data = Class_SL_Data(this)
@@ -215,7 +231,7 @@ class Test_1 : AppCompatActivity() {
                     statistics_object = tools_Save_Load.Data_Load()
 
                     // Actualizar
-                    statistics_object.actualizar(listFA)
+                    statistics_object.actualizar(temp)
 
                     // serializa el objeto estadistica una ves actializado
                     tools_Save_Load.Data_Save(statistics_object)
@@ -223,10 +239,11 @@ class Test_1 : AppCompatActivity() {
                     /****************************************************************************************************************************************/
                     /**         Prueba Visualizacion                                                                                                       **/
                     /****************************************************************************************************************************************/
-                    /*//===================================================================================
+                    //===================================================================================
                     // objeto nue con los datos del objeto guardado
                     //===================================================================================
-                    var new: Class_Statistics = tools_Save_Load.Data_Load()
+                    /*
+                    var new: Estadisticas_nueva_Clase = tools_Save_Load.Data_Load()
 
                     val toastnew = Toast.makeText(applicationContext, "Numero de Test Completado => "+new.getNTest(), duration)
                     toastnew.show()
@@ -235,27 +252,27 @@ class Test_1 : AppCompatActivity() {
 
                     for(Item in new.getListcorrect())
                     {
-                        if (Item.value != 0)
+                        if (Item.Numero != 0)
                         {
-                            val toastnew1 = Toast.makeText(applicationContext, "Verbos correctos => "+Item.key+" -> "+Item.value, duration)
+                            val toastnew1 = Toast.makeText(applicationContext, "Verbos correctos => "+Item.NVerb+" -> "+Item.Numero, duration)
                             toastnew1.show()
                         }
                     }
 
                     for(Item in new.getListwrong())
                     {
-                        if (Item.value != 0)
+                        if (Item.Numero != 0)
                         {
-                            val toastnew1 = Toast.makeText(applicationContext, "Verbos fallados => "+Item.key+" -> "+Item.value, duration)
+                            val toastnew1 = Toast.makeText(applicationContext, "Verbos fallados => "+Item.NVerb+" -> "+Item.Numero, duration)
                             toastnew1.show()
                         }
                     }
 
                     for(Item in new.getListUsedVerb())
                     {
-                        if (Item.value != 0)
+                        if (Item.Numero != 0)
                         {
-                            val toastnew1 = Toast.makeText(applicationContext, "Verbos usados => "+Item.key+" -> "+Item.value, duration)
+                            val toastnew1 = Toast.makeText(applicationContext, "Verbos usados => "+Item.NVerb+" -> "+Item.Numero, duration)
                             toastnew1.show()
                         }
                     }*/
