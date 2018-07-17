@@ -16,9 +16,9 @@ class Class_GenerateTest(val context: Context)
 
     // variable de porsetajes de proguntas
     var PxDificiles = 0.10
-    var PxFaciles = 0.10
-    var PxMasFalladas = 0.10
-    var PxMenosUsadas = 0.10
+    var PxFaciles = 0.00
+    var PxMasFalladas = 0.00
+    var PxMenosUsadas = 0.00
 
     init
     {

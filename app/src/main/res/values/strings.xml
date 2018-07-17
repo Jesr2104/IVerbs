@@ -31,5 +31,8 @@
 
     <string name="title_activity_test_1">Test_1</string>
     <string name="title_activity_test">Test</string>
+    <string name="prueba_completado">Prueba completado</string>
+    <string name="fallos">Fallos</string>
+    <string name="aciertos">Aciertos</string>
 
 </resources>

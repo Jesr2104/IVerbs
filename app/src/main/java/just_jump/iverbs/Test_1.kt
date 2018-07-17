@@ -6,12 +6,14 @@ import android.os.Handler
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.text.Html
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import just_jump.iverbs.Objetos_Creados.*
 import java.text.DecimalFormat
 import kotlinx.android.synthetic.main.activity_test_1.*
 import kotlinx.android.synthetic.main.content_test_1.*
+import kotlinx.android.synthetic.main.infor_testcomplete.view.*
 
 class Test_1 : AppCompatActivity() {
 
@@ -219,7 +221,7 @@ class Test_1 : AppCompatActivity() {
                     val text = "Prueba Finalizada!"
                     val duration = Toast.LENGTH_SHORT
 
-                    var statistics_object:Estadisticas_nueva_Clase
+                    var statistics_object:Class_Statistics
 
                     // objeto para poder crear la serializacion del objeto estadistica en memoria
                     val tools_Save_Load: Class_SL_Data = Class_SL_Data(this)
@@ -243,7 +245,7 @@ class Test_1 : AppCompatActivity() {
                     // objeto nue con los datos del objeto guardado
                     //===================================================================================
                     /*
-                    var new: Estadisticas_nueva_Clase = tools_Save_Load.Data_Load()
+                    var new: Class_Statistics = tools_Save_Load.Data_Load()
 
                     val toastnew = Toast.makeText(applicationContext, "Numero de Test Completado => "+new.getNTest(), duration)
                     toastnew.show()
@@ -279,14 +281,61 @@ class Test_1 : AppCompatActivity() {
                     /****************************************************************************************************************************************/
                     /****************************************************************************************************************************************/
 
-                    var Manejador = Handler().postDelayed({
-                        finish()
-                    },2000)
+                    val dialog = AlertDialog.Builder(this)
+                    val dialogView = layoutInflater.inflate(R.layout.infor_testcomplete,null)
 
-                    // Mostrar estadisticas de la prueba
-                    // aciertos
-                    // falllos
-                    // relacion de la prueba contestada con exito
+                    var aciertos:Int = 0
+                    var fallos:Int = 0
+                    var numeroPreguntas:Int = temp.size
+
+                    val lista_datos:ArrayList<String> = ArrayList()
+
+                    for(item in temp)
+                    {
+                        if(item.Numero == 1)
+                        {
+                            fallos ++
+
+                            if(item.Tiempo == 0)
+                                lista_datos.add(item.NVerb + "  -> Infinitive")
+                            if(item.Tiempo == 1)
+                                lista_datos.add(item.NVerb + "  -> Past")
+                            if(item.Tiempo == 2)
+                                lista_datos.add(item.NVerb + "  -> Participle ")
+                        }
+                        else if(item.Numero == 0)
+                        {
+                            aciertos ++
+                        }
+                    }
+
+                    var N:Float = aciertos.toFloat() / numeroPreguntas.toFloat()
+                    var porcentajeAciertos = (N*100).toInt()
+
+                    dialogView.numeroaciertos.text = "${aciertos}"
+                    dialogView.numerofallos.text = "${fallos}"
+                    dialogView.numeronpreguntas.text = "${numeroPreguntas}"
+                    dialogView.numeroporcentajeacierto.text = "${porcentajeAciertos} %"
+
+                    val adapter = ArrayAdapter<String>(
+                            this,                               // Context
+                            android.R.layout.simple_list_item_1,       // Layout
+                            lista_datos                                // List
+                    )
+
+                    if(fallos == 0)
+                    {
+                        dialogView.textlistwrongword.setVisibility(View.GONE)
+                        dialogView.listwrongword.setVisibility(View.GONE)
+                    }
+
+                    dialogView.listwrongword.adapter = adapter
+                    dialog.setView(dialogView)
+                    dialog.show()
+
+                    dialogView.buttonexit.setOnClickListener({
+                        finish()
+                    })
                 }
             }
             else

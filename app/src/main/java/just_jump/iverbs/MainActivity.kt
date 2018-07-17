@@ -7,7 +7,7 @@ import android.os.Handler
 import android.widget.Toast
 import just_jump.iverbs.Objetos_Creados.Class_ListIVerb
 import just_jump.iverbs.Objetos_Creados.Class_SL_Data
-import just_jump.iverbs.Objetos_Creados.Estadisticas_nueva_Clase
+import just_jump.iverbs.Objetos_Creados.Class_Statistics
 import just_jump.iverbs.Objetos_Creados.Contenedor_data
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(){
                 temp.add(verbTempPastParticiple)
             }
 
-            var statistics:Estadisticas_nueva_Clase = Estadisticas_nueva_Clase()
+            var statistics:Class_Statistics = Class_Statistics()
             statistics.inicializar_Clase(temp)
 
             // Escribe la informacion para que la proxima ves que ser carge el objeto ya tenga la lista
