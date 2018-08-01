@@ -217,7 +217,7 @@
             android:layout_below="@id/textlistwrongword"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"/>
 
         <Button
             android:id="@+id/buttonexit"
@@ -225,7 +225,6 @@
             android:layout_height="wrap_content"
             android:text="Ok"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_below="@id/listwrongword"
             android:layout_alignParentRight="true" />

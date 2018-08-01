@@ -23,7 +23,7 @@ class Class_AdaptadorCoustom(var context: Context, Item:ArrayList<Class_MapListv
 
         if(vista == null)
         {
-            vista = LayoutInflater.from(context).inflate(R.layout.tem_maquetacionlistview,null)
+            vista = LayoutInflater.from(context).inflate(R.layout.item_maquetacionlistview,null)
             holder = viewHolder(vista)
             vista.tag = holder
         }

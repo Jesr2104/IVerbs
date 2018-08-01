@@ -17,8 +17,6 @@ import android.support.v7.widget.SearchView
 import android.widget.ImageView
 import android.widget.LinearLayout
 
-
-
 class ListaVerb : AppCompatActivity(), SearchView.OnQueryTextListener
 {
     //------------------------------------------------

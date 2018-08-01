@@ -317,11 +317,13 @@ class Test_1 : AppCompatActivity() {
                     dialogView.numeronpreguntas.text = "${numeroPreguntas}"
                     dialogView.numeroporcentajeacierto.text = "${porcentajeAciertos} %"
 
-                    val adapter = ArrayAdapter<String>(
+                    /*val adapter = ArrayAdapter<String>(
                             this,                               // Context
                             android.R.layout.simple_list_item_1,       // Layout
                             lista_datos                                // List
-                    )
+                    )*/
+
+                    val adapter = Class_AdaptadorCFallos(this,lista_datos)
 
                     if(fallos == 0)
                     {
