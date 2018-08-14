@@ -34,5 +34,11 @@
     <string name="prueba_completado">Prueba completado</string>
     <string name="fallos">Fallos</string>
     <string name="aciertos">Aciertos</string>
+    <string name="comprobar">Comprobar</string>
+    <string name="titulo_test1">Preguntas Correctas</string>
+    <string name="MSN_correctaPregunta">Muy Bien!</string>
+    <string name="MSN_FinalPrueba">Prueba Finalizada!</string>
+    <string name="MSN_PreguntaIncorrecta">La respuesta no es correcta!</string>
+    <string name="MSN_RespuestaVacia">La respuesta esta vacia..</string>
 
 </resources>

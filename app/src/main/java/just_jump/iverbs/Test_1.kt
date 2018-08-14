@@ -119,11 +119,25 @@ class Test_1 : AppCompatActivity() {
 
                 val dato = Campo.getText().toString().toLowerCase()
                 val dato2 = Test.ListPregunta[contador].getVerb().S_Palabra[Test.ListPregunta[contador].getTPreguntado()].toLowerCase()
+                var excepciones = false
+
+                // Controlo las palabras que estan escritas en unas misma cadena de caracteres y para comprobarlos se hace difirente
+                if(     dato2.contains("was")||
+                        dato2.contains("were")||
+                        dato2.contains("betted")||
+                        dato2.contains("bet")||
+                        dato2.contains("dreamed")||
+                        dato2.contains("dreamt")||
+                        dato2.contains("learned")||
+                        dato2.contains("learnt"))
+                {
+                    excepciones = true
+                }
 
                 // cuando la respuesta es correcta
-                if (dato.equals(dato2)) {
+                if ((dato.equals(dato2)) || (excepciones)) {
 
-                    val text = "Muy Bien!"
+                    val text = getString(R.string.MSN_correctaPregunta)
                     val duration = Toast.LENGTH_SHORT
 
                     val toast = Toast.makeText(applicationContext, text, duration)
@@ -165,7 +179,7 @@ class Test_1 : AppCompatActivity() {
                     if(camporespuesta.text.length > 0)
                     {
                         // cambiar texto a variable traducible
-                        val text = "La respuesta no es correcta!"
+                        val text = getString(R.string.MSN_PreguntaIncorrecta)
                         val duration = Toast.LENGTH_SHORT
 
                         val toast = Toast.makeText(applicationContext, text, duration)
@@ -207,7 +221,7 @@ class Test_1 : AppCompatActivity() {
                     else
                     {
                         // cambiar texto a variable traducible
-                        val text = "La respuesta esta vacia.."
+                        val text = getString(R.string.MSN_RespuestaVacia)
                         val duration = Toast.LENGTH_SHORT
 
                         val toast = Toast.makeText(applicationContext, text, duration)
@@ -218,7 +232,7 @@ class Test_1 : AppCompatActivity() {
                 // cuando el test ha sido terminado
                 if(comprueba_test_Completo == Test.ListPregunta.size)
                 {
-                    val text = "Prueba Finalizada!"
+                    val text = getString(R.string.MSN_FinalPrueba)
                     val duration = Toast.LENGTH_SHORT
 
                     var statistics_object:Class_Statistics
@@ -317,12 +331,6 @@ class Test_1 : AppCompatActivity() {
                     dialogView.numeronpreguntas.text = "${numeroPreguntas}"
                     dialogView.numeroporcentajeacierto.text = "${porcentajeAciertos} %"
 
-                    /*val adapter = ArrayAdapter<String>(
-                            this,                               // Context
-                            android.R.layout.simple_list_item_1,       // Layout
-                            lista_datos                                // List
-                    )*/
-
                     val adapter = Class_AdaptadorCFallos(this,lista_datos)
 
                     if(fallos == 0)
@@ -333,6 +341,7 @@ class Test_1 : AppCompatActivity() {
 
                     dialogView.listwrongword.adapter = adapter
                     dialog.setView(dialogView)
+                    dialog.setCancelable(false)
                     dialog.show()
 
                     dialogView.buttonexit.setOnClickListener({

@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(){
         })
 
         B_Examen.setOnClickListener({
-            var inten: Intent = Intent(this,Test::class.java)
+            var inten: Intent = Intent(this,Test_1::class.java)
             startActivity(inten)
         })
     }
