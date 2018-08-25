@@ -4,6 +4,9 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.widget.ArrayAdapter
+import android.widget.ListAdapter
+import android.widget.ListView
 import android.widget.Toast
 import just_jump.iverbs.Objetos_Creados.Class_ListIVerb
 import just_jump.iverbs.Objetos_Creados.Class_SL_Data
@@ -75,6 +78,34 @@ class MainActivity : AppCompatActivity(){
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayUseLogoEnabled(true)
         supportActionBar?.setLogo(R.drawable.logo)
+
+        //------------------------------------------------------------------------------------------
+        //         Inicializar estadisticas de la aplicacion
+        //------------------------------------------------------------------------------------------
+
+        val tools_Save_Load: Class_SL_Data = Class_SL_Data(this)
+        var statistics_object:Class_Statistics
+
+        // cargar el objetos estadisticas
+        statistics_object = tools_Save_Load.Data_Load()
+
+        var list = findViewById<ListView>(R.id.Lista_mFallados)
+
+        var Datos = statistics_object.getListwrong()
+        var nuevalist:ArrayList<String> = ArrayList()
+
+        for (Item in Datos)
+        {
+            nuevalist.add(Item.NVerb)
+        }
+
+        var adaptador = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,nuevalist)
+
+        list.adapter = adaptador as ListAdapter?
+
+
+
+        //------------------------------------------------------------------------------------------
 
         B_ListaVerbos.setOnClickListener({
             var inten: Intent = Intent(this,ListaVerb::class.java)
