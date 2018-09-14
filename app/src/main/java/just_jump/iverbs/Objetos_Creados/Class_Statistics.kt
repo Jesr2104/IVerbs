@@ -87,6 +87,7 @@ class Class_Statistics
         //------------------------------------------------------------------------------------------
     }
 
+    // funcion que ordenas los datos de mayor a menos
     fun Orderlist(TypeList:Int): ArrayList<Contenedor_data>
     {
         var temp:ArrayList<Contenedor_data> = ArrayList()

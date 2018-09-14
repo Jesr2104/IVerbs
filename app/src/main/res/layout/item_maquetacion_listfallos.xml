@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/fallos_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextFallo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#3b68aa"
+        android:textSize="15dp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-condensed" />
+
+    <TextView
+        android:id="@+id/Tiempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/fallos_text"
+        android:text="Tiempo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#3b68aa"
+        android:textSize="10dp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-condensed"/>
+
+    <TextView
+        android:id="@+id/NFallo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="87dp"
+        android:text="NFallo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ec8e1d"
+        android:textSize="15dp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-condensed"/>
+</RelativeLayout>

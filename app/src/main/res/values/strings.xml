@@ -40,5 +40,6 @@
     <string name="MSN_FinalPrueba">Prueba Finalizada!</string>
     <string name="MSN_PreguntaIncorrecta">La respuesta no es correcta!</string>
     <string name="MSN_RespuestaVacia">La respuesta esta vacia..</string>
+    <string name="palabras_mas_falladas">Palabras mas falladas</string>
 
 </resources>

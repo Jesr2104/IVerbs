@@ -16,6 +16,4 @@ class Class_MapListview(traduccion:String, present:String, past:String, pastp:St
         this.traduccion = traduccion
         this.titleverb = titleverb
     }
-
-
 }

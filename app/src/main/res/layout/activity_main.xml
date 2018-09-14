@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="just_jump.iverbs.MainActivity">
 
     <Button
@@ -34,10 +35,25 @@
     <ListView
         android:id="@+id/Lista_mFallados"
         android:layout_width="117dp"
-        android:layout_height="122dp"
+        android:layout_height="175dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="27dp"
         android:layout_marginTop="184dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Lista_mFallados"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="-184dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/palabras_mas_falladas"
+        android:textColor="#3b68aa"
+        android:textStyle="bold|italic"
+        android:textSize="16sp"
+        app:fontFamily="sans-serif-condensed"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
 </RelativeLayout>

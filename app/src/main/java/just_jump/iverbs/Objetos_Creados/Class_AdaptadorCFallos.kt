@@ -21,7 +21,7 @@ class Class_AdaptadorCFallos(var context: Context, Listafallos: ArrayList<String
 
         if(vista == null)
         {
-            vista = LayoutInflater.from(context).inflate(R.layout.item_maquitacion_fallos,null)
+            vista = LayoutInflater.from(context).inflate(R.layout.item_maquetacion_fallos,null)
             holder = ViewHolder(vista)
             vista.tag = holder
         }

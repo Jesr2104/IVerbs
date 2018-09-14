@@ -4,14 +4,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.ArrayAdapter
-import android.widget.ListAdapter
-import android.widget.ListView
-import android.widget.Toast
-import just_jump.iverbs.Objetos_Creados.Class_ListIVerb
-import just_jump.iverbs.Objetos_Creados.Class_SL_Data
-import just_jump.iverbs.Objetos_Creados.Class_Statistics
-import just_jump.iverbs.Objetos_Creados.Contenedor_data
+import android.widget.*
+import just_jump.iverbs.Objetos_Creados.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(){
@@ -91,17 +85,46 @@ class MainActivity : AppCompatActivity(){
 
         var list = findViewById<ListView>(R.id.Lista_mFallados)
 
-        var Datos = statistics_object.getListwrong()
-        var nuevalist:ArrayList<String> = ArrayList()
+        var Datos = statistics_object.Orderlist(1)
+        var nuevalist:ArrayList<Contenedor_data> = ArrayList()
+
+        var cont:Int = 0
+        var numdata:Int = 4
 
         for (Item in Datos)
         {
-            nuevalist.add(Item.NVerb)
+            if(cont<numdata)
+            {
+                if (Item.Numero != 0)
+                {
+                    nuevalist.add(Item)
+                }
+                cont++
+            }
+            if(cont == numdata)
+            {
+                var new:Contenedor_data = Contenedor_data()
+
+                new.NVerb = "Ver mas.."
+                new.Numero = 0
+                new.Tiempo = 3
+                nuevalist.add(new)
+                cont++
+            }
         }
 
-        var adaptador = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,nuevalist)
+        val adaptador = Class_AdaptadorListFallos(this, nuevalist)
 
         list.adapter = adaptador as ListAdapter?
+
+        list.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, i, l ->
+
+            if(i == nuevalist.size -1)
+            {
+                // AQUI TENGO QUE PONER LO QUE VOY A HACER CUANDO TO QUEN EN MAS..
+                Toast.makeText(this, nuevalist.get(i).NVerb, Toast.LENGTH_LONG).show()
+            }
+        }
 
 
 
