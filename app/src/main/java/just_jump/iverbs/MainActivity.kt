@@ -84,9 +84,14 @@ class MainActivity : AppCompatActivity(){
         statistics_object = tools_Save_Load.Data_Load()
 
         var list = findViewById<ListView>(R.id.Lista_mFallados)
+        var list1 = findViewById<ListView>(R.id.Lista_menosFallados)
 
         var Datos = statistics_object.Orderlist(1)
+        var Datos2 = statistics_object.Orderlist(2)
+
+
         var nuevalist:ArrayList<Contenedor_data> = ArrayList()
+        var nuevalist1:ArrayList<Contenedor_data> = ArrayList()
 
         var cont:Int = 0
         var numdata:Int = 4
@@ -113,9 +118,36 @@ class MainActivity : AppCompatActivity(){
             }
         }
 
+        cont = 0
+        numdata = 4
+
+        for (Item in Datos2)
+        {
+            if(cont<numdata)
+            {
+                if (Item.Numero != 0)
+                {
+                    nuevalist1.add(Item)
+                }
+                cont++
+            }
+            if(cont == numdata)
+            {
+                var new:Contenedor_data = Contenedor_data()
+
+                new.NVerb = "Ver mas.."
+                new.Numero = 0
+                new.Tiempo = 3
+                nuevalist1.add(new)
+                cont++
+            }
+        }
+
         val adaptador = Class_AdaptadorListFallos(this, nuevalist)
+        val adaptador1 = Class_AdaptadorListFallos(this, nuevalist1)
 
         list.adapter = adaptador as ListAdapter?
+        list1.adapter = adaptador1 as ListAdapter?
 
         list.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, i, l ->
 

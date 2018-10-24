@@ -39,7 +39,18 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="27dp"
-        android:layout_marginTop="184dp" />
+        android:layout_marginTop="190dp"
+        android:background="@drawable/listverbslayout_button"/>
+
+    <ListView
+        android:id="@+id/Lista_menosFallados"
+        android:layout_width="117dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginEnd="27dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/listverbslayout_button"/>
 
     <TextView
         android:id="@+id/textView"
@@ -50,6 +61,21 @@
         android:layout_marginBottom="-184dp"
         android:layout_marginStart="20dp"
         android:text="@string/palabras_mas_falladas"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#3b68aa"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:fontFamily="sans-serif-condensed" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Lista_mFallados"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="-184dp"
+        android:layout_marginEnd="35dp"
+        android:text="Palabras usadas"
         android:textColor="#3b68aa"
         android:textStyle="bold|italic"
         android:textSize="16sp"
