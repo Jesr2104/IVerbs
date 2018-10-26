@@ -86,12 +86,17 @@ class MainActivity : AppCompatActivity(){
         var list = findViewById<ListView>(R.id.Lista_mFallados)
         var list1 = findViewById<ListView>(R.id.Lista_menosFallados)
 
+        var DatosTest1 = findViewById<TextView>(R.id.DTest1)
+        var DatosTest2 = findViewById<TextView>(R.id.DTest2)
+
         var Datos = statistics_object.Orderlist(1)
         var Datos2 = statistics_object.Orderlist(2)
 
-
         var nuevalist:ArrayList<Contenedor_data> = ArrayList()
         var nuevalist1:ArrayList<Contenedor_data> = ArrayList()
+
+        DatosTest1.setText("" + statistics_object.getNTestwithouterror())
+        DatosTest2.setText("" + statistics_object.getNTest())
 
         var cont:Int = 0
         var numdata:Int = 4
@@ -153,12 +158,27 @@ class MainActivity : AppCompatActivity(){
 
             if(i == nuevalist.size -1)
             {
-                // AQUI TENGO QUE PONER LO QUE VOY A HACER CUANDO TO QUEN EN MAS..
-                Toast.makeText(this, nuevalist.get(i).NVerb, Toast.LENGTH_LONG).show()
+                var inten: Intent = Intent(this, ListaMFalladas::class.java)
+                //----------------------------------------------------------------------------------
+                //  ENVIAMOS LA INFORMACION AL INTENT QUE ESPECIFICA LA LISTA QUE SE QUIERES MOSTRAR
+                //----------------------------------------------------------------------------------
+                inten.putExtra("TAG",0)
+                startActivity(inten)
             }
         }
 
+        list1.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, i, l ->
 
+            if (i == nuevalist1.size - 1) {
+
+                var inten: Intent = Intent(this, ListaMFalladas::class.java)
+                //----------------------------------------------------------------------------------
+                //  ENVIAMOS LA INFORMACION AL INTENT QUE ESPECIFICA LA LISTA QUE SE QUIERES MOSTRAR
+                //----------------------------------------------------------------------------------
+                inten.putExtra("TAG",1)
+                startActivity(inten)
+            }
+        }
 
         //------------------------------------------------------------------------------------------
 

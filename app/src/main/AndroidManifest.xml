@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="just_jump.iverbs">
 
     <application
@@ -25,14 +23,15 @@
         <activity android:name=".InforVerbs" />
         <activity
             android:name=".Test_1"
+            android:configChanges="screenSize|orientation"
             android:label="@string/title_activity_test_1"
             android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="screenSize|orientation"
-            android:windowSoftInputMode="stateHidden"
-        />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Test"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ListaMFalladas"></activity>
     </application>
+
 </manifest>
