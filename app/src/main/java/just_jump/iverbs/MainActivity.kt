@@ -180,17 +180,21 @@ class MainActivity : AppCompatActivity(){
             }
         }
 
+        prueba.setOnClickListener{
+            tools_Save_Load.Reset_Statistics()
+        }
+
         //------------------------------------------------------------------------------------------
 
-        B_ListaVerbos.setOnClickListener({
+        B_ListaVerbos.setOnClickListener{
             var inten: Intent = Intent(this,ListaVerb::class.java)
             startActivity(inten)
-        })
+        }
 
-        B_Examen.setOnClickListener({
+        B_Examen.setOnClickListener{
             var inten: Intent = Intent(this,Test_1::class.java)
             startActivity(inten)
-        })
+        }
     }
     override fun onBackPressed(){
 

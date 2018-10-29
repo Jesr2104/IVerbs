@@ -5,7 +5,8 @@ import com.google.gson.Gson
 
 class Class_SL_Data(val context: Context)
 {
-    var ListaVerb_Completa: Class_ListIVerb = Class_ListIVerb(context)
+    // creo que esta linea sera innecesaria
+    //var ListaVerb_Completa: Class_ListIVerb = Class_ListIVerb(context)
 
     fun ValidarData(): Boolean
     {
@@ -38,5 +39,12 @@ class Class_SL_Data(val context: Context)
         val statistics = gson.fromJson<Class_Statistics>(json, Class_Statistics::class.java!!)
 
         return statistics
+    }
+
+    fun Reset_Statistics()
+    {
+        var newObjStatistics:Class_Statistics = Class_Statistics()
+
+        Data_Save(newObjStatistics)
     }
 }

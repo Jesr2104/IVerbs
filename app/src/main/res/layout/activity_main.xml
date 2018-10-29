@@ -6,132 +6,179 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="just_jump.iverbs.MainActivity">
 
-    <Button
-        android:id="@+id/B_ListaVerbos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/DatosMenu1"
-        android:textStyle="bold|italic" />
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/B_Examen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/B_ListaVerbos"
-        android:layout_centerHorizontal="true"
-        android:layout_alignEnd="@+id/B_ListaVerbos"
-        android:layout_alignLeft="@+id/B_ListaVerbos"
-        android:layout_alignRight="@+id/B_ListaVerbos"
-        android:layout_alignStart="@+id/B_ListaVerbos"
-        android:layout_marginTop="10dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/DatosMenu3"
-        android:textStyle="bold|italic" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/Lista_mFallados"
-        android:layout_width="147dp"
-        android:layout_height="175dp"
-        android:layout_below="@+id/text1"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="27dp"
-        android:background="@drawable/listverbslayout_button"/>
+            <Button
+                android:id="@+id/B_ListaVerbos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/DatosMenu1"
+                android:textStyle="bold|italic" />
 
-    <ListView
-        android:id="@+id/Lista_menosFallados"
-        android:layout_width="147dp"
-        android:layout_height="175dp"
-        android:layout_below="@+id/text1"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="27dp"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/listverbslayout_button"/>
+            <Button
+                android:id="@+id/B_Examen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/B_ListaVerbos"
+                android:layout_centerHorizontal="true"
+                android:layout_alignEnd="@+id/B_ListaVerbos"
+                android:layout_alignLeft="@+id/B_ListaVerbos"
+                android:layout_alignRight="@+id/B_ListaVerbos"
+                android:layout_alignStart="@+id/B_ListaVerbos"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/DatosMenu3"
+                android:textStyle="bold|italic" />
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/B_Examen"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="30dp"
-        android:text="@string/palabras_mas_falladas"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#3b68aa"
-        android:textSize="16sp"
-        android:textStyle="bold|italic"
-        app:fontFamily="sans-serif-condensed" />
+            <ListView
+                android:id="@+id/Lista_mFallados"
+                android:layout_width="147dp"
+                android:layout_height="175dp"
+                android:layout_below="@+id/text1"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="27dp"
+                android:background="@drawable/listverbslayout_button"/>
 
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/B_Examen"
-        android:layout_marginTop="25dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="50dp"
-        android:text="Palabras usadas"
-        android:textColor="#3b68aa"
-        android:textStyle="bold|italic"
-        android:textSize="16sp"
-        app:fontFamily="sans-serif-condensed"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+            <ListView
+                android:id="@+id/Lista_menosFallados"
+                android:layout_width="147dp"
+                android:layout_height="175dp"
+                android:layout_below="@+id/text1"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="27dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/listverbslayout_button"/>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Lista_mFallados"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="27dp"
-        android:text="Numero de tes completados sin fallos"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#3b68aa"
-        android:textSize="16sp"
-        android:textStyle="bold|italic"
-        app:fontFamily="sans-serif-condensed"/>
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/B_Examen"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="30dp"
+                android:text="@string/palabras_mas_falladas"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#3b68aa"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                app:fontFamily="sans-serif-condensed" />
 
-    <TextView
-        android:id="@+id/DTest1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_marginLeft="330dp"
-        android:text="numero"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#ec8e1d"
-        android:textSize="15dp"
-        android:textStyle="bold|italic"
-        app:fontFamily="sans-serif-condensed"/>
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/B_Examen"
+                android:layout_marginTop="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="50dp"
+                android:text="Palabras usadas"
+                android:textColor="#3b68aa"
+                android:textStyle="bold|italic"
+                android:textSize="16sp"
+                app:fontFamily="sans-serif-condensed"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView3"
-        android:text="Numero de test completados"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="27dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#3b68aa"
-        android:textSize="16sp"
-        android:textStyle="bold|italic"
-        app:fontFamily="sans-serif-condensed"/>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Lista_mFallados"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="27dp"
+                android:text="Numero de test completados sin fallos"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#3b68aa"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                app:fontFamily="sans-serif-condensed"/>
 
-    <TextView
-        android:id="@+id/DTest2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/DTest1"
-        android:layout_alignTop="@+id/textView5"
-        android:text="numero"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#ec8e1d"
-        android:textSize="15dp"
-        android:textStyle="bold|italic"
-        app:fontFamily="sans-serif-condensed"/>
+            <TextView
+                android:id="@+id/DTest1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textView3"
+                android:layout_marginLeft="330dp"
+                android:text="numero"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#ec8e1d"
+                android:textSize="15dp"
+                android:textStyle="bold|italic"
+                app:fontFamily="sans-serif-condensed"/>
 
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView3"
+                android:text="Numero de test completados"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="27dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#3b68aa"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                app:fontFamily="sans-serif-condensed"/>
+
+            <TextView
+                android:id="@+id/DTest2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/DTest1"
+                android:layout_alignTop="@+id/textView5"
+                android:text="numero"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#ec8e1d"
+                android:textSize="15dp"
+                android:textStyle="bold|italic"
+                app:fontFamily="sans-serif-condensed"/>
+
+            <TextView
+                android:id="@+id/porcentaje"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Porcentaje Complatado"
+                android:layout_below="@id/textView5"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="27dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#3b68aa"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                app:fontFamily="sans-serif-condensed"/>
+
+            <TextView
+                android:id="@+id/DTest3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/DTest2"
+                android:layout_alignTop="@+id/porcentaje"
+                android:text="15%"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#ec8e1d"
+                android:textSize="15dp"
+                android:textStyle="bold|italic"
+                app:fontFamily="sans-serif-condensed"/>
+
+            <Button
+                android:id="@+id/prueba"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="prueba"
+                android:layout_below="@id/DTest3"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="150dp"/>
+
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
