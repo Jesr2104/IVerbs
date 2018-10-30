@@ -9,33 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity
-            android:name=".Splash_Screen"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
+        <activity android:name=".Splash_Screen"
+                  android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>.
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListaVerb" />
-        <activity android:name=".InforVerbs" />
-        <activity
-            android:name=".Test_1"
-            android:configChanges="screenSize|orientation"
-            android:label="@string/title_activity_test_1"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".Test"
-            android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ListaMFalladas" />
-        <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".MainActivity"
+                  android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity android:name=".ListaVerb"/>
+        <activity android:name=".InforVerbs"/>
+        <activity android:name=".ListaMFalladas"/>
+        <activity android:name=".Test_1"
+                  android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
