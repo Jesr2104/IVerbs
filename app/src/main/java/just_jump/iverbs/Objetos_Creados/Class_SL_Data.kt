@@ -43,8 +43,41 @@ class Class_SL_Data(val context: Context)
 
     fun Reset_Statistics()
     {
-        var newObjStatistics:Class_Statistics = Class_Statistics()
+        var objeto = Class_ListIVerb(context)
 
-        Data_Save(newObjStatistics)
+        // Crea e inicializa el objetos con la lista de verbos irrregulares que seran usado para
+        // crear la lista de los verbos para la clase estadistica
+        objeto.InicializarObjetoLista()
+
+        var temp:ArrayList<Contenedor_data> = ArrayList()
+
+        for(item in objeto.ListIVerb)
+        {
+            var verbTempPresent:Contenedor_data = Contenedor_data()
+            verbTempPresent.NVerb = item.S_Palabra[0]
+            verbTempPresent.Numero = 0
+            verbTempPresent.Tiempo = 0
+
+            var verbTempPast:Contenedor_data = Contenedor_data()
+            verbTempPast.NVerb = item.S_Palabra[1]
+            verbTempPast.Numero = 0
+            verbTempPast.Tiempo = 1
+
+            var verbTempPastParticiple:Contenedor_data = Contenedor_data()
+            verbTempPastParticiple.NVerb = item.S_Palabra[2]
+            verbTempPastParticiple.Numero = 0
+            verbTempPastParticiple.Tiempo = 2
+
+            temp.add(verbTempPresent)
+            temp.add(verbTempPast)
+            temp.add(verbTempPastParticiple)
+        }
+
+        var statistics:Class_Statistics = Class_Statistics()
+        statistics.inicializar_Clase(temp)
+
+        // Escribe la informacion para que la proxima ves que ser carge el objeto ya tenga la lista
+        // de palabras actualizadas para general las variable en el objeto estadistica
+        Data_Save(statistics)
     }
 }

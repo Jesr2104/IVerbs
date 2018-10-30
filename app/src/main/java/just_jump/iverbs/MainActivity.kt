@@ -1,26 +1,35 @@
 package just_jump.iverbs
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.support.design.widget.NavigationView
+import android.support.v4.view.GravityCompat
+import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import android.widget.*
 import just_jump.iverbs.Objetos_Creados.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity(){
+class Main2Activity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     var contador: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+
+        //******************************************************************************************
+        //******************************************************************************************
 
         //------------------------------------------------------------------------------------------
         //  Inicializar Listar de Verbos para el Objeto estadistica y su grabado en memoria
         //------------------------------------------------------------------------------------------
         var saveData: Class_SL_Data = Class_SL_Data(this)
-
         if(!saveData.ValidarData())
         {
             var objeto = Class_ListIVerb(this)
@@ -33,17 +42,17 @@ class MainActivity : AppCompatActivity(){
 
             for(item in objeto.ListIVerb)
             {
-                var verbTempPresent:Contenedor_data = Contenedor_data()
+                var verbTempPresent: Contenedor_data = Contenedor_data()
                 verbTempPresent.NVerb = item.S_Palabra[0]
                 verbTempPresent.Numero = 0
                 verbTempPresent.Tiempo = 0
 
-                var verbTempPast:Contenedor_data = Contenedor_data()
+                var verbTempPast: Contenedor_data = Contenedor_data()
                 verbTempPast.NVerb = item.S_Palabra[1]
                 verbTempPast.Numero = 0
                 verbTempPast.Tiempo = 1
 
-                var verbTempPastParticiple:Contenedor_data = Contenedor_data()
+                var verbTempPastParticiple: Contenedor_data = Contenedor_data()
                 verbTempPastParticiple.NVerb = item.S_Palabra[2]
                 verbTempPastParticiple.Numero = 0
                 verbTempPastParticiple.Tiempo = 2
@@ -53,7 +62,7 @@ class MainActivity : AppCompatActivity(){
                 temp.add(verbTempPastParticiple)
             }
 
-            var statistics:Class_Statistics = Class_Statistics()
+            var statistics: Class_Statistics = Class_Statistics()
             statistics.inicializar_Clase(temp)
 
             // Escribe la informacion para que la proxima ves que ser carge el objeto ya tenga la lista
@@ -78,7 +87,7 @@ class MainActivity : AppCompatActivity(){
         //------------------------------------------------------------------------------------------
 
         val tools_Save_Load: Class_SL_Data = Class_SL_Data(this)
-        var statistics_object:Class_Statistics
+        var statistics_object: Class_Statistics
 
         // cargar el objetos estadisticas
         statistics_object = tools_Save_Load.Data_Load()
@@ -113,7 +122,7 @@ class MainActivity : AppCompatActivity(){
             }
             if(cont == numdata)
             {
-                var new:Contenedor_data = Contenedor_data()
+                var new: Contenedor_data = Contenedor_data()
 
                 new.NVerb = "Ver mas.."
                 new.Numero = 0
@@ -138,7 +147,7 @@ class MainActivity : AppCompatActivity(){
             }
             if(cont == numdata)
             {
-                var new:Contenedor_data = Contenedor_data()
+                var new: Contenedor_data = Contenedor_data()
 
                 new.NVerb = "Ver mas.."
                 new.Numero = 0
@@ -180,10 +189,6 @@ class MainActivity : AppCompatActivity(){
             }
         }
 
-        prueba.setOnClickListener{
-            tools_Save_Load.Reset_Statistics()
-        }
-
         //------------------------------------------------------------------------------------------
 
         B_ListaVerbos.setOnClickListener{
@@ -195,8 +200,19 @@ class MainActivity : AppCompatActivity(){
             var inten: Intent = Intent(this,Test_1::class.java)
             startActivity(inten)
         }
+
+        //******************************************************************************************
+        //******************************************************************************************
+
+        val toggle = ActionBarDrawerToggle(
+                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        nav_view.setNavigationItemSelectedListener(this)
     }
-    override fun onBackPressed(){
+
+    override fun onBackPressed() {
 
         contador ++
         if (contador == 2)
@@ -214,5 +230,36 @@ class MainActivity : AppCompatActivity(){
         var Manejador = Handler().postDelayed({
             contador = 0
         }, 1500)
+
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
+        }
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        // Handle navigation view item clicks here.
+        /*when (item.itemId) {
+            R.id.nav_camera -> {
+                // Handle the camera action
+            }
+            R.id.nav_gallery -> {
+
+            }
+            R.id.nav_slideshow -> {
+
+            }
+            R.id.nav_manage -> {
+
+            }
+            R.id.nav_share -> {
+
+            }
+            R.id.nav_send -> {
+
+            }
+        }*/
+
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
     }
 }
