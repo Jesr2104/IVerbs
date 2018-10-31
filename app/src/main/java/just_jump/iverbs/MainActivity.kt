@@ -23,9 +23,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        //******************************************************************************************
-        //******************************************************************************************
-
         //------------------------------------------------------------------------------------------
         //  Inicializar Listar de Verbos para el Objeto estadistica y su grabado en memoria
         //------------------------------------------------------------------------------------------
@@ -95,8 +92,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var list = findViewById<ListView>(R.id.Lista_mFallados)
         var list1 = findViewById<ListView>(R.id.Lista_menosFallados)
 
-        var DatosTest1 = findViewById<TextView>(R.id.DTest1)
-        var DatosTest2 = findViewById<TextView>(R.id.DTest2)
+        //var DatosTest1 = findViewById<TextView>(R.id.DTest1)
+        //var DatosTest2 = findViewById<TextView>(R.id.DTest2)
+
+        //******************************************************//
+        //******************************************************//
+        //******************************************************//
+        //******************************************************//
+        //******************************************************//
+        //******************************************************//
+
 
         var Datos = statistics_object.Orderlist(1)
         var Datos2 = statistics_object.Orderlist(2)
@@ -104,8 +109,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var nuevalist:ArrayList<Contenedor_data> = ArrayList()
         var nuevalist1:ArrayList<Contenedor_data> = ArrayList()
 
-        DatosTest1.setText("" + statistics_object.getNTestwithouterror())
-        DatosTest2.setText("" + statistics_object.getNTest())
+        //DatosTest1.setText("" + statistics_object.getNTestwithouterror())
+        //DatosTest2.setText("" + statistics_object.getNTest())
 
         var cont:Int = 0
         var numdata:Int = 4
@@ -201,9 +206,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(inten)
         }
 
-        //******************************************************************************************
-        //******************************************************************************************
-
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
@@ -238,26 +240,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
-        /*when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+        when (item.itemId)
+        {
+            R.id.nav_config -> {
+                var inten: Intent = Intent(this,Configuracion::class.java)
+                startActivity(inten)
             }
-            R.id.nav_gallery -> {
+            R.id.nav_compartir -> {
 
             }
-            R.id.nav_slideshow -> {
+            R.id.nav_calificanos -> {
 
             }
-            R.id.nav_manage -> {
+            R.id.nav_about -> {
 
             }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
-        }*/
+        }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
