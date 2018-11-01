@@ -24,6 +24,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         //------------------------------------------------------------------------------------------
+        /*Linea de codigo para vizualizar el icono en la action bar*/
+        //------------------------------------------------------------------------------------------
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
+        supportActionBar?.setLogo(R.drawable.logo)
+        //------------------------------------------------------------------------------------------
+
+        //------------------------------------------------------------------------------------------
         //  Inicializar Listar de Verbos para el Objeto estadistica y su grabado en memoria
         //------------------------------------------------------------------------------------------
         var saveData: Class_SL_Data = Class_SL_Data(this)
@@ -72,82 +81,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         //------------------------------------------------------------------------------------------
-
-        /*Linea de codigo para vizualizar el icono en la action bar*/
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
-        supportActionBar?.setLogo(R.drawable.logo)
+        //  Carga los datos cuando se inicia la aplicacion
+        //------------------------------------------------------------------------------------------
+        CargarDatos()
 
         //------------------------------------------------------------------------------------------
-        //         Inicializar estadisticas de la aplicacion
+        //  Eventos de los botones mas informacion
         //------------------------------------------------------------------------------------------
-
-        val tools_Save_Load: Class_SL_Data = Class_SL_Data(this)
-        var statistics_object: Class_Statistics
-
-        // cargar el objetos estadisticas
-        statistics_object = tools_Save_Load.Data_Load()
-
-        var list = findViewById<ListView>(R.id.Lista_mFallados)
-        var list1 = findViewById<ListView>(R.id.Lista_menosFallados)
-
-        //var DatosTest1 = findViewById<TextView>(R.id.DTest1)
-        //var DatosTest2 = findViewById<TextView>(R.id.DTest2)
-
-        //******************************************************//
-        //******************************************************//
-        //******************************************************//
-        //******************************************************//
-        //******************************************************//
-        //******************************************************//
-
-
-        var Datos = statistics_object.Orderlist(1)
-        var Datos2 = statistics_object.Orderlist(2)
-
-        var nuevalist:ArrayList<Contenedor_data> = ArrayList()
-        var nuevalist1:ArrayList<Contenedor_data> = ArrayList()
-
-        //DatosTest1.setText("" + statistics_object.getNTestwithouterror())
-        //DatosTest2.setText("" + statistics_object.getNTest())
-
-        var cont:Int = 0
-        var numdata:Int = 5
-
-        for (Item in Datos)
-        {
-            if(cont<numdata)
-            {
-                if (Item.Numero != 0)
-                {
-                    nuevalist.add(Item)
-                }
-                cont++
-            }
-        }
-
-        cont = 0
-        numdata = 5
-
-        for (Item in Datos2)
-        {
-            if(cont<numdata)
-            {
-                if (Item.Numero != 0)
-                {
-                    nuevalist1.add(Item)
-                }
-                cont++
-            }
-        }
-
-        val adaptador = Class_AdaptadorListFallos(this, nuevalist)
-        val adaptador1 = Class_AdaptadorListFallos(this, nuevalist1)
-
-        list.adapter = adaptador as ListAdapter?
-        list1.adapter = adaptador1 as ListAdapter?
-
         BVermasPfalladas.setOnClickListener {
             var inten: Intent = Intent(this, ListaMFalladas::class.java)
             //----------------------------------------------------------------------------------
@@ -156,7 +96,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             inten.putExtra("TAG",0)
             startActivity(inten)
         }
-
         BVermasPusadas.setOnClickListener {
             var inten: Intent = Intent(this, ListaMFalladas::class.java)
             //----------------------------------------------------------------------------------
@@ -165,7 +104,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             inten.putExtra("TAG",1)
             startActivity(inten)
         }
-
         //------------------------------------------------------------------------------------------
 
         B_ListaVerbos.setOnClickListener{
@@ -231,5 +169,78 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onResume(){
+
+        super.onResume()
+
+        CargarDatos()
+    }
+
+    fun CargarDatos()
+    {
+        //------------------------------------------------------------------------------------------
+        //         Carga los datos de la estadisticas de la aplicacion
+        //------------------------------------------------------------------------------------------
+        val tools_Save_Load: Class_SL_Data = Class_SL_Data(this)
+        var statistics_object: Class_Statistics
+
+        // cargar el objetos estadisticas
+        statistics_object = tools_Save_Load.Data_Load()
+
+        var list = findViewById<ListView>(R.id.Lista_mFallados)
+        var list1 = findViewById<ListView>(R.id.Lista_menosFallados)
+
+        var DatosTest1 = findViewById<TextView>(R.id.TestCF)
+        var DatosTest2 = findViewById<TextView>(R.id.TestSF)
+        var DatosTest3 = findViewById<TextView>(R.id.TestPCompletado)
+
+        var Datos = statistics_object.Orderlist(1)
+        var Datos2 = statistics_object.Orderlist(2)
+
+        var nuevalist:ArrayList<Contenedor_data> = ArrayList()
+        var nuevalist1:ArrayList<Contenedor_data> = ArrayList()
+
+        DatosTest1.setText("" + statistics_object.getNTest())
+        DatosTest2.setText("" + statistics_object.getNTestwithouterror())
+        DatosTest3.setText("" + statistics_object.getPorcentaje())
+
+
+        var cont:Int = 0
+        var numdata:Int = 5
+
+        for (Item in Datos)
+        {
+            if(cont<numdata)
+            {
+                if (Item.Numero != 0)
+                {
+                    nuevalist.add(Item)
+                }
+                cont++
+            }
+        }
+
+        cont = 0
+        numdata = 5
+
+        for (Item in Datos2)
+        {
+            if(cont<numdata)
+            {
+                if (Item.Numero != 0)
+                {
+                    nuevalist1.add(Item)
+                }
+                cont++
+            }
+        }
+
+        val adaptador = Class_AdaptadorListFallos(this, nuevalist)
+        val adaptador1 = Class_AdaptadorListFallos(this, nuevalist1)
+
+        list.adapter = adaptador as ListAdapter?
+        list1.adapter = adaptador1 as ListAdapter?
     }
 }

@@ -1,5 +1,7 @@
 package just_jump.iverbs.Objetos_Creados
 
+import java.text.DecimalFormat
+
 class Class_Statistics
 {
     var num_test_complete:Int = Int.MIN_VALUE
@@ -119,6 +121,32 @@ class Class_Statistics
         }
 
         return temp
+    }
+
+    fun getPorcentaje(): String?
+    {
+        var Result = 0.0
+        val formato = DecimalFormat("0.0")
+        var cont = 0
+        var NACiertos = 0.0
+
+        while(cont < dictverbs_usered.size)
+        {
+
+            if (dictverbs_correct[cont].Numero>=dictverbs_wrong[cont].Numero)
+            {
+                if(dictverbs_correct[cont].Numero != 0)
+                {
+                    NACiertos+=1
+                }
+            }
+
+            cont++
+        }
+
+        Result=(((100*NACiertos)/288))
+
+        return formato.format(Result)
     }
 
     fun getNTest():Int

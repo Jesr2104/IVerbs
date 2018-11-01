@@ -111,7 +111,7 @@ class Test_1 : AppCompatActivity() {
         //=========================================================================================//
         Cargar_Pregunta()
 
-        bcomprobar.setOnClickListener({
+        bcomprobar.setOnClickListener {
 
             if(Test.ListPregunta.size > comprueba_test_Completo)
             {
@@ -344,18 +344,18 @@ class Test_1 : AppCompatActivity() {
                     dialog.setCancelable(false)
                     dialog.show()
 
-                    dialogView.buttonexit.setOnClickListener({
+                    dialogView.buttonexit.setOnClickListener {
                         finish()
-                    })
+                    }
                 }
             }
             else
             {
                 // cuando se precione el boton comprobar pero la prueba ha terminado!!!
             }
-        })
+        }
 
-        disabledsound.setOnClickListener ({
+        disabledsound.setOnClickListener {
 
             if (disabled_sound)
             {
@@ -367,7 +367,7 @@ class Test_1 : AppCompatActivity() {
                 disabled_sound = true
                 disabledsound.setImageResource(R.drawable.corneta_prohibido)
             }
-        })
+        }
     }
     override fun onBackPressed() {
 
