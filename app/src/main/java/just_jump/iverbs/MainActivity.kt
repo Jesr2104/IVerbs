@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //DatosTest2.setText("" + statistics_object.getNTest())
 
         var cont:Int = 0
-        var numdata:Int = 4
+        var numdata:Int = 5
 
         for (Item in Datos)
         {
@@ -125,20 +125,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
                 cont++
             }
-            if(cont == numdata)
-            {
-                var new: Contenedor_data = Contenedor_data()
-
-                new.NVerb = "Ver mas.."
-                new.Numero = 0
-                new.Tiempo = 3
-                nuevalist.add(new)
-                cont++
-            }
         }
 
         cont = 0
-        numdata = 4
+        numdata = 5
 
         for (Item in Datos2)
         {
@@ -150,16 +140,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
                 cont++
             }
-            if(cont == numdata)
-            {
-                var new: Contenedor_data = Contenedor_data()
-
-                new.NVerb = "Ver mas.."
-                new.Numero = 0
-                new.Tiempo = 3
-                nuevalist1.add(new)
-                cont++
-            }
         }
 
         val adaptador = Class_AdaptadorListFallos(this, nuevalist)
@@ -168,30 +148,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         list.adapter = adaptador as ListAdapter?
         list1.adapter = adaptador1 as ListAdapter?
 
-        list.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, i, l ->
-
-            if(i == nuevalist.size -1)
-            {
-                var inten: Intent = Intent(this, ListaMFalladas::class.java)
-                //----------------------------------------------------------------------------------
-                //  ENVIAMOS LA INFORMACION AL INTENT QUE ESPECIFICA LA LISTA QUE SE QUIERES MOSTRAR
-                //----------------------------------------------------------------------------------
-                inten.putExtra("TAG",0)
-                startActivity(inten)
-            }
+        BVermasPfalladas.setOnClickListener {
+            var inten: Intent = Intent(this, ListaMFalladas::class.java)
+            //----------------------------------------------------------------------------------
+            //  ENVIAMOS LA INFORMACION AL INTENT QUE ESPECIFICA LA LISTA QUE SE QUIERES MOSTRAR
+            //----------------------------------------------------------------------------------
+            inten.putExtra("TAG",0)
+            startActivity(inten)
         }
 
-        list1.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, i, l ->
-
-            if (i == nuevalist1.size - 1) {
-
-                var inten: Intent = Intent(this, ListaMFalladas::class.java)
-                //----------------------------------------------------------------------------------
-                //  ENVIAMOS LA INFORMACION AL INTENT QUE ESPECIFICA LA LISTA QUE SE QUIERES MOSTRAR
-                //----------------------------------------------------------------------------------
-                inten.putExtra("TAG",1)
-                startActivity(inten)
-            }
+        BVermasPusadas.setOnClickListener {
+            var inten: Intent = Intent(this, ListaMFalladas::class.java)
+            //----------------------------------------------------------------------------------
+            //  ENVIAMOS LA INFORMACION AL INTENT QUE ESPECIFICA LA LISTA QUE SE QUIERES MOSTRAR
+            //----------------------------------------------------------------------------------
+            inten.putExtra("TAG",1)
+            startActivity(inten)
         }
 
         //------------------------------------------------------------------------------------------
