@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Configuracion">
 
+    <include
+        android:id="@+id/toolbar_2104"
+        layout="@layout/mytoolbar"/>
+
     <Button
         android:id="@+id/Reset_Progress"
         android:layout_width="wrap_content"

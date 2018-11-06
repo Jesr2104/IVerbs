@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.support.v7.widget.Toolbar
 import android.text.Html
 import android.widget.TextView
 import just_jump.iverbs.Objetos_Creados.Class_IVerb
@@ -19,11 +20,8 @@ class InforVerbs : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infor_verbs)
 
-        /*Linea de codigo para vizualizar el icono en la action bar*/
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
-        supportActionBar?.setLogo(R.drawable.logo)
+        var mytoolB: Toolbar = findViewById(R.id.toolbar_2104)
+        setSupportActionBar(mytoolB)
 
         var VerboInfo: Class_IVerb = getIntent().getExtras().getSerializable("VerboInfo") as Class_IVerb
 
@@ -66,7 +64,8 @@ class InforVerbs : AppCompatActivity(){
         })
         //======================================================================//
         //======================================================================//
-        BotonSongPresentEjemplo.setOnClickListener({
+
+        BotonSongPresentEjemplo.setOnClickListener {
 
             //Variable para calcular el tiempo de reproduccion
             var time:Int = 0
@@ -78,12 +77,12 @@ class InforVerbs : AppCompatActivity(){
             var Manejador = Handler().postDelayed({
                 BotonSongPresentEjemplo.setImageResource(R.drawable.song)
             }, time.toLong())
-        })
+        }
 
         /*=====================================================================*/
         /*      Past event                                                     */
         /*=====================================================================*/
-        BotonSongPast.setOnClickListener({
+        BotonSongPast.setOnClickListener {
 
             //Variable para calcular el tiempo de reproduccion
             var time:Int = 0
@@ -95,7 +94,7 @@ class InforVerbs : AppCompatActivity(){
             var Manejador = Handler().postDelayed({
                 BotonSongPast.setImageResource(R.drawable.song)
             }, time.toLong())
-        })
+        }
         //======================================================================//
         //======================================================================//
         BotonSongPastEjemplo.setOnClickListener({

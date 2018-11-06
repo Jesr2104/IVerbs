@@ -7,9 +7,11 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.widget.*
 import just_jump.iverbs.Objetos_Creados.*
+import kotlinx.android.synthetic.main.activity_lista_verb.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -21,16 +23,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
-
-        //------------------------------------------------------------------------------------------
-        /*Linea de codigo para vizualizar el icono en la action bar*/
-        //------------------------------------------------------------------------------------------
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
-        supportActionBar?.setLogo(R.drawable.logo)
-        //------------------------------------------------------------------------------------------
 
         //------------------------------------------------------------------------------------------
         //  Inicializar Listar de Verbos para el Objeto estadistica y su grabado en memoria

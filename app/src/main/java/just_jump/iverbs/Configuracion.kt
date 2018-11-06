@@ -3,6 +3,7 @@ package just_jump.iverbs
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
+import android.support.v7.widget.Toolbar
 import android.widget.Toast
 import just_jump.iverbs.Objetos_Creados.Class_SL_Data
 import kotlinx.android.synthetic.main.activity_configuracion.*
@@ -13,11 +14,8 @@ class Configuracion : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_configuracion)
 
-        /*Linea de codigo para vizualizar el icono en la action bar*/
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
-        supportActionBar?.setLogo(R.drawable.logo)
+        var mytoolB: Toolbar = findViewById(R.id.toolbar_2104)
+        setSupportActionBar(mytoolB)
 
         Reset_Progress.setOnClickListener{
 

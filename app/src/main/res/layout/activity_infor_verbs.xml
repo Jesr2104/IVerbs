@@ -8,9 +8,14 @@
     android:background="#3B68AA"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/toolbar_2104"
+        layout="@layout/mytoolbar"/>
+
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_2104">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -433,7 +438,8 @@
                             android:layout_marginLeft="10dp"
                             android:background="@android:color/transparent"
                             android:scaleType="fitCenter"
-                            app:srcCompat="@drawable/song" />
+                            app:srcCompat="@drawable/song"
+                            tools:ignore="VectorDrawableCompat" />
 
                     </LinearLayout>
 
@@ -465,7 +471,6 @@
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>
-
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

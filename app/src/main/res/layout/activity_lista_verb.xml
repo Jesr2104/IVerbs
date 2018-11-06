@@ -5,10 +5,15 @@
     android:layout_height="match_parent"
     android:background="#3B68AA">
 
+    <include
+        android:id="@+id/toolbar_2104"
+        layout="@layout/mytoolbar"/>
+
     <ListView
         android:id="@+id/NombreLista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:dividerHeight="0dp"
-        android:divider="@null"/>
+        android:divider="@null"
+        android:layout_below="@+id/toolbar_2104"/>
 </android.widget.RelativeLayout>

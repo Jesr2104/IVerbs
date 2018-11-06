@@ -2,6 +2,7 @@ package just_jump.iverbs
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import android.widget.ListAdapter
 import android.widget.ListView
 import android.widget.Toast
@@ -16,11 +17,8 @@ class ListaMFalladas : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_mfalladas)
 
-        /*Linea de codigo para vizualizar el icono en la action bar*/
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
-        supportActionBar?.setLogo(R.drawable.logo)
+        var mytoolB: Toolbar = findViewById(R.id.toolbar_2104)
+        setSupportActionBar(mytoolB)
 
         val tools_Save_Load: Class_SL_Data = Class_SL_Data(this)
         var statistics_object: Class_Statistics

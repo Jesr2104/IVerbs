@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.text.Html
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -20,7 +21,9 @@ class Test_1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_1)
-        setSupportActionBar(toolbar)
+
+        var mytoolB: Toolbar = findViewById(R.id.toolbar_2104)
+        setSupportActionBar(mytoolB)
 
         //  Cargamos los datos con la lista de todos lo verbos a preguntar
         var Test: Class_GenerateTest = Class_GenerateTest(this)
@@ -39,14 +42,6 @@ class Test_1 : AppCompatActivity() {
         var Tiempo_pregunta = -1
         var comprueba_test_Completo: Int = 0
         var temp:ArrayList<Contenedor_data> = ArrayList()
-
-        //======================================================================//
-        //  Linea de codigo para vizualizar el icono en la action bar
-        //======================================================================//
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
-        supportActionBar?.setLogo(R.drawable.logo)
 
         fun Actualizar_Progress(){
 
@@ -251,49 +246,6 @@ class Test_1 : AppCompatActivity() {
 
                     // serializa el objeto estadistica una ves actializado
                     tools_Save_Load.Data_Save(statistics_object)
-
-                    /****************************************************************************************************************************************/
-                    /**         Prueba Visualizacion                                                                                                       **/
-                    /****************************************************************************************************************************************/
-                    //===================================================================================
-                    // objeto nue con los datos del objeto guardado
-                    //===================================================================================
-                    /*
-                    var new: Class_Statistics = tools_Save_Load.Data_Load()
-
-                    val toastnew = Toast.makeText(applicationContext, "Numero de Test Completado => "+new.getNTest(), duration)
-                    toastnew.show()
-                    val toastnew1 = Toast.makeText(applicationContext, "Numero de Test Completado sin fallos => "+new.getNTestwithouterror(), duration)
-                    toastnew1.show()
-
-                    for(Item in new.getListcorrect())
-                    {
-                        if (Item.Numero != 0)
-                        {
-                            val toastnew1 = Toast.makeText(applicationContext, "Verbos correctos => "+Item.NVerb+" -> "+Item.Numero, duration)
-                            toastnew1.show()
-                        }
-                    }
-
-                    for(Item in new.getListwrong())
-                    {
-                        if (Item.Numero != 0)
-                        {
-                            val toastnew1 = Toast.makeText(applicationContext, "Verbos fallados => "+Item.NVerb+" -> "+Item.Numero, duration)
-                            toastnew1.show()
-                        }
-                    }
-
-                    for(Item in new.getListUsedVerb())
-                    {
-                        if (Item.Numero != 0)
-                        {
-                            val toastnew1 = Toast.makeText(applicationContext, "Verbos usados => "+Item.NVerb+" -> "+Item.Numero, duration)
-                            toastnew1.show()
-                        }
-                    }*/
-                    /****************************************************************************************************************************************/
-                    /****************************************************************************************************************************************/
 
                     val dialog = AlertDialog.Builder(this)
                     val dialogView = layoutInflater.inflate(R.layout.infor_testcomplete,null)

@@ -14,6 +14,7 @@ import just_jump.iverbs.Objetos_Creados.Class_ListIVerb
 import just_jump.iverbs.Objetos_Creados.Class_MapListview
 import kotlinx.android.synthetic.main.activity_lista_verb.*
 import android.support.v7.widget.SearchView
+import android.support.v7.widget.Toolbar
 import android.widget.ImageView
 import android.widget.LinearLayout
 
@@ -32,11 +33,8 @@ class ListaVerb : AppCompatActivity(), SearchView.OnQueryTextListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_verb)
 
-        /*Linea de codigo para vizualizar el icono en la action bar*/
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
-        supportActionBar?.setLogo(R.drawable.logo)
+        var mytoolB: Toolbar = findViewById(R.id.toolbar_2104)
+        setSupportActionBar(mytoolB)
 
         //------------------------------------------------
         //   Variables Locales

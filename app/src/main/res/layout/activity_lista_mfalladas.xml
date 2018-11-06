@@ -6,10 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ListaMFalladas">
 
+    <include
+        android:id="@+id/toolbar_2104"
+        layout="@layout/mytoolbar"/>
+
     <ListView
         android:id="@+id/Lista_Datos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_below="@+id/toolbar_2104"
+        android:layout_alignParentLeft="true"
+        android:divider="@null"/>
 </RelativeLayout>
