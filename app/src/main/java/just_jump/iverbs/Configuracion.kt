@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.Toolbar
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import just_jump.iverbs.Objetos_Creados.Class_SL_Data
 import kotlinx.android.synthetic.main.activity_configuracion.*
@@ -16,6 +18,10 @@ class Configuracion : AppCompatActivity() {
 
         var mytoolB: Toolbar = findViewById(R.id.toolbar_2104)
         setSupportActionBar(mytoolB)
+
+        var spinner = findViewById<Spinner>(R.id.myspinner)
+        var adartador = ArrayAdapter.createFromResource(this,R.array.language,android.R.layout.simple_spinner_item)
+        spinner.adapter = adartador
 
         Reset_Progress.setOnClickListener{
 
