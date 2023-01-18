@@ -5,9 +5,15 @@ Welcome to the repository for IVerbs, an Android application designed to help us
 
 Even though the app may not be perfect from a programming standpoint, it served as the foundation for my development journey and I am proud of what it taught me.
 
-![https://github.com/Jesr2104](https://github.com/Jesr2104/IVerbs/blob/5d5327990368fd7777424b2002b95a636470e10e/AppScreens.webp)
+| Icon | Logo |
+| --- | --- |
+| <img src="https://github.com/Jesr2104/IVerbs/blob/424f57a63a32addc1ffb6dbd0f781b29d778e07d/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="50px" height="50px"> | <img src="https://github.com/Jesr2104/IVerbs/blob/424f57a63a32addc1ffb6dbd0f781b29d778e07d/app/src/main/res/drawable/logo.png" width="90px" height="50px">|
+
+
+
 
 ## Screens
+![https://github.com/Jesr2104](https://github.com/Jesr2104/IVerbs/blob/5d5327990368fd7777424b2002b95a636470e10e/AppScreens.webp)
 
 1. **[Screen 1] - Home**: This screen is a user interface that allows users to access a list of irregular verbs and practice them through a test feature. The statistics of completed games, including the words used and the words ordered by mistakes made, are also available.
 
