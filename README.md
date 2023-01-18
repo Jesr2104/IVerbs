@@ -5,7 +5,7 @@ Welcome to the repository for IVerbs, an Android application designed to help us
 
 Even though the app may not be perfect from a programming standpoint, it served as the foundation for my development journey and I am proud of what it taught me.
 
-![https://github.com/Jesr2104](https://github.com/Jesr2104/IVerbs/blob/f2803cb713067e342b24a57eb78c3fe622e01eaa/app-Screens.png)
+![https://github.com/Jesr2104](https://github.com/Jesr2104/IVerbs/blob/f2803cb713067e342b24a57eb78c3fe622e01eaa/AppScreens.png)
 
 ## Screens
 
