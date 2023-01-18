@@ -9,15 +9,15 @@ Even though the app may not be perfect from a programming standpoint, it served 
 
 ## Screens
 
-1. **Login screen**: This screen is used for user authentication, where users enter their username and password to access the system or application.
+1. **Home [1 screen]**: This screen is a user interface that allows users to access a list of irregular verbs and practice them through a test feature. The statistics of completed games, including the words used and the words ordered by mistakes made, are also available.
 
-2. **Home screen**: This is the main screen that users see when they open an application or system. It typically provides an overview of the most important features and functions.
+2. **Main menu [2 screen]**: This main menu of the application provides access to basic functions, such as configuring the app, sharing it, and rating it. It also includes information about the app and its creator.
 
-3. **Dashboard screen**: This screen provides a visual representation of key performance indicators and metrics, such as sales, traffic, or usage data.
+3. **List of verbs [3 screen]**: This screen is providing a comprehensive list of verbs for the user to study, including the ability to listen to pronunciation, view examples, and see the verbs in different tenses.
 
-4. **Profile screen**: This screen displays information about a user, such as their name, contact information, and account settings.
+4. **Description [4 screen]**: This screen is displaying information about a specific verb that has been selected from the list of verbs, likely including its definition, translations, and possibly examples of how it is used in different tenses or contexts.
 
-5. **Search screen**: This screen allows users to search for specific content or information within an application or system.
+5. **Description tenses [5 screen]**: this is the description screen too but showing all the examples and times.
 
 6. **Settings screen**: This screen allows users to customize various settings and preferences for an application or system.
 
