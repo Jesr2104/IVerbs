@@ -23,6 +23,6 @@ Even though the app may not be perfect from a programming standpoint, it served 
 
 7. **[Screen 7] - Test result**: Finally, when you complete a test, it returns the information on the successes and errors, listing the words of the failed words.
 
-8. **[Screen 8] - **: This screen displays detailed information about a specific item, such as a product, contact, or task.
+8. **[Screen 8] - Settings**: This is the application configuration screen where you can configure some aspects of it, such as changing the language, notifications and deleting the two saved data.
 
-9. **[Screen 9] - **: This screen displays an error message when an action or request cannot be completed, such as when a user enters an incorrect password.
+9. **[Screen 9] - Words used in the tests and those failed in the tests**: This screen is used to show two different lists that are the words used in the tests and the words that you have failed in the tests and their frequency.
